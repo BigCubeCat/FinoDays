@@ -1,4 +1,4 @@
-import { TPlanDTO } from "./planDTO"
+import { TPlanDTO } from "./dto/planDTO"
 
 export const plans: TPlanDTO[] = [
     {
