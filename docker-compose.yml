@@ -9,6 +9,26 @@ services:
     stdin_open: true
     tty: true
 
+  scoring:
+    build: ./scoring
+    restart: always
+    ports:
+      - ${SCORING_PORT}:${SCORING_PORT}
+    environment:
+      - PORT=${SCORING_PORT}
+    stdin_open: true
+    tty: true
+
+  bank_api:
+    build: ./bank_api
+    restart: always
+    ports:
+      - ${API_PORT}:${API_PORT}
+    environment:
+      - PORT=${API_PORT}
+    stdin_open: true
+    tty: true
+
   frontend:
     build: ./frontend
     ports:
