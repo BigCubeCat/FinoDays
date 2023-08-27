@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="591e027b-2c39-4f83-8f35-945f72bafd37" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.env" beforeDir="false" afterPath="$PROJECT_DIR$/../.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/src/dtos/productDTO.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/src/dtos/requestDTO.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/src/dtos/userDTO.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +27,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": -1
+}]]></component>
   <component name="ProjectId" id="2UY8QTW8xXNo1k2Fft3gygaZGTQ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,13 +41,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "dto",
     "last_opened_file_path": "/home/bigcubecat/Projects/node_projects/psb/bank_api",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "/home/bigcubecat/Projects/node_projects/psb/scoring/node_modules/typescript/lib",
+    "ts.external.directory.path": "/opt/webstorm/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -59,6 +65,7 @@
       <workItem from="1693127200299" duration="15000" />
       <workItem from="1693127233564" duration="23000" />
       <workItem from="1693127263408" duration="799000" />
+      <workItem from="1693151126314" duration="748000" />
     </task>
     <servers />
   </component>
