@@ -1,0 +1,19 @@
+# Logs
+logs
+*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+frontend/node_modules
+frontend/dist
+frontend/dist-ssr
+frontend/*.local
+
+frontend/!.vscode/extensions.json
+frontend/.idea
+
+
+# Backend
+
+backend/node_modules
