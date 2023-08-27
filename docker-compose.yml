@@ -8,3 +8,8 @@ services:
       - BACK_PORT=${BACK_PORT}
     stdin_open: true
     tty: true
+
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:3000
