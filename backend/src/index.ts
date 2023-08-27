@@ -4,6 +4,11 @@ import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
 
+
+import  swaggerUi from 'swagger-ui-express';
+
+import swaggerFile from './assets/swagger-output.json';
+
 import indexRouter from './routers/indexRouter';
 
 const app = express();
@@ -14,6 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
+
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
