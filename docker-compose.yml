@@ -8,6 +8,15 @@ services:
       - BACK_PORT=${BACK_PORT}
     stdin_open: true
     tty: true
+  scoring:
+    build: ./scoring
+    restart: always
+    ports:
+      - ${SCORING_PORT}:${SCORING_PORT}
+    environment:
+      - PORT=${SCORING_PORT}
+    stdin_open: true
+    tty: true
 
   frontend:
     build: ./frontend
