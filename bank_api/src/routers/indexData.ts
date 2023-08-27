@@ -1,4 +1,6 @@
-export const plans = [
+import { TPlanDTO } from "./planDTO"
+
+export const plans: TPlanDTO[] = [
     {
         "title": "Первый ипотечный",
         "type": "Ипотека",
@@ -34,7 +36,7 @@ export const plans = [
     },
     {
         "title": "Молодежное начало",
-        "type": "Кредит",
+        "type": "Потребительский",
         "sum": { "from": 10000, "to": 100000 },
         "term": { "unit": "месяц", "count": 12 },
         "rate": 9.8,

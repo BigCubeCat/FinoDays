@@ -1,5 +1,11 @@
-import {TProvision, UserDto} from './types';
+import { TProvision, UserDto } from './types';
 
+/**
+ * Calculates the age score based on the given age.
+ *
+ * @param {number} age - The age of the person.
+ * @return {number} The age score.
+ */
 const ageScore = (age: number) => {
   if (age < 23) {
     return 9;
@@ -44,17 +50,27 @@ const countLoansScore = (count: number) => {
 
 const provisionScore = (prov: TProvision) => {
   switch (prov) {
-    case 'car':
-      return 47;
-    case 'house':
-      return 47;
-    case 'land':
-      return 32;
-    case 'none':
+    case 'Нет':
       return 15;
+    case 'Поручительство':
+      return 28;
+    case 'Автомобиль':
+      return 46;
+    case 'Недвижимость':
+      return 68;
+    case 'Бизнес':
+      return 50;
+    case 'Имущество':
+      return 35;
   }
 };
 
+/**
+ * Calculates the sum of scores based on the user's information.
+ *
+ * @param {UserDto} user - The user object containing the user's information.
+ * @return {number} The sum of the scores.
+ */
 export default function calculateSum(user: UserDto) {
   const percent = user.consumption / user.income;
   const result = ageScore(user.age) +

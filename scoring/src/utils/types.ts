@@ -1,4 +1,4 @@
-export type TProvision = 'none' | 'car' | 'house' | 'land';
+export type TProvision = 'Нет' | 'Поручительство' | 'Автомобиль' | 'Недвижимость' | 'Бизнес' | 'Имущество';
 
 export type UserDto = {
   name: string;
