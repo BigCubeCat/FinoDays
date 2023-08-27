@@ -4,5 +4,7 @@ services:
     restart: always
     ports:
       - ${BACK_PORT}:${BACK_PORT}
+    environment:
+      - BACK_PORT=${BACK_PORT}
     stdin_open: true
     tty: true

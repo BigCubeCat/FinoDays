@@ -20,11 +20,14 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-app.set('port', process.env.PORT);
+const port = process.env.BACK_PORT;
+console.log("port = ", port);
+
+app.set('port', port);
 
 const server = http.createServer(app);
 server.on('listening', onListening);
-server.listen(process.env.PORT);
+server.listen(port);
 
 function onListening() {
   const addr = server.address();
