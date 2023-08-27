@@ -1,0 +1,8 @@
+services:
+  backend:
+    build: ./backend
+    restart: always
+    ports:
+      - ${BACK_PORT}:${BACK_PORT}
+    stdin_open: true
+    tty: true
