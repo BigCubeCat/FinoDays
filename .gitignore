@@ -12,3 +12,8 @@ frontend/*.local
 
 frontend/!.vscode/extensions.json
 frontend/.idea
+
+
+# Backend
+
+backend/node_modules
