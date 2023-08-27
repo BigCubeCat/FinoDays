@@ -1,4 +1,5 @@
 import express from 'express';
+import calculateSum from '../utils/scoringAlgorithm';
 
 const router = express.Router();
 
@@ -7,10 +8,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    const successPercent = Math.round(Math.random() * 100);
+    const result = calculateSum(req.body);
     res.status(200).send({
-      status: successPercent > 50,
-      percent: successPercent,
+      status: result > 100,
+      score: result,
     });
   },
 );
