@@ -9,7 +9,7 @@ export type TPlanDTO = {
   condition: {provision: string; user_score: number};
 };
 
-export type TPlanType = 'Ипотека' | 'Потребительский' | 'Автокредит';
+export type TPlanType = 'mortgage' | 'credit' | 'car-loan';
 
 export type TPlanResponseDTO = {
   plans: TPlanDTO[];

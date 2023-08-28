@@ -1,20 +1,15 @@
 import http from 'http';
-import {TPlanDTO, TPlanResponseDTO, TPlanType} from '../dtos/planDTO';
-import {getUserScore} from './scoreApiBridge';
-import {TUserDto} from '../dtos/userDTO';
-import {config} from '../config';
+import { TPlanDTO, TPlanResponseDTO, TPlanType } from '../dtos/planDTO';
+import { getUserScore } from './scoreApiBridge';
+import { TUserDto } from '../dtos/userDTO';
+import { config } from '../config';
+import { TPlanRequestDTO } from '../dtos/requestDTO';
 
-/**
- * Retrieves plans from the API based on a given score and type.
- *
- * @param {number} score - The score to use for retrieving plans.
- * @param {TPlanType} type - The type of plans to retrieve.
- * @return {Promise<TPlanDTO[]>} A promise that resolves with an array of plan DTOs.
- */
-function getPlansFromApi(score: number, type: TPlanType): Promise<TPlanDTO[]> {
+
+function getPlansFromApi(score: number, plan: TPlanRequestDTO): Promise<TPlanDTO[]> {
   const body = JSON.stringify({
     score: score,
-    type: type,
+    plan: plan,
   });
 
   const options = {
@@ -35,7 +30,6 @@ function getPlansFromApi(score: number, type: TPlanType): Promise<TPlanDTO[]> {
       };
       response.setEncoding('utf8');
       response.on('data', (chunk) => {
-        console.log(chunk)
         result = JSON.parse(chunk);
       });
       response.on('end', () => {
@@ -50,21 +44,13 @@ function getPlansFromApi(score: number, type: TPlanType): Promise<TPlanDTO[]> {
   });
 }
 
-/**
- * Retrieves the plans for a given user and plan type.
- *
- * @param {TUserDto} user - The user object.
- * @param {TPlanType} type - The type of plan.
- * @return {Promise<TPlanDTO[]>} A promise that resolves to an array of plan objects.
- */
 export async function getUserPlans(
   user: TUserDto,
-  type: TPlanType,
+  plan: TPlanRequestDTO,
 ): Promise<TPlanDTO[]> {
   try {
     const userScore = await getUserScore(user);
-    const plans = await getPlansFromApi(userScore, type);
-    console.log('plans = ', plans);
+    const plans = await getPlansFromApi(userScore, plan);
     return plans;
   } catch (error) {
     console.log('error = ', error);

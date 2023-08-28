@@ -1,31 +1,48 @@
-import { TPlanDTO } from '../dto/planDTO';
+import { TPlanDTO, TPlanRequestDTO, TSum } from '../dto/planDTO';
 import { plans } from '../creditPlans';
-import router from './indexRouter';
+import express from 'express';
 
-/**
- * GET request handler for the root route.
- * Returns all plans.
- */
-router.get('/get/all', function (_req, res, _next) {
+const router = express.Router();
+
+router.get('/all', function (_req, res, _next) {
   res.send({
     "plans": plans
   })
 });
 
-
-/**
- * GET request handler for the route with score and type parameters.
- * Returns plans that match the given score and type.
- */
-router.post('/get/match', function (req, res, _next) {
-  const score: Number = req.body.score;
+type TMatchBody = {
+  score: number,
+  plan: TPlanRequestDTO
+}
+router.post('/match', function (req, res, _next) {
+  const body: TMatchBody = req.body;
   let result: TPlanDTO[] = [];
-  plans.forEach(plan => {
-    if (plan.condition.user_score <= Number(score)) {
-      result.push(plan)
+  plans.forEach(planCmp => {
+    if (planCmp.condition.user_score <= body.score && (body.plan.term.count <= planCmp.term.count && body.plan.term.unit == planCmp.term.unit) && rangesIntersect(body.plan.sum, planCmp.sum)) {
+      result.push(planCmp)
     }
   })
   res.send({
     "plans": result
   });
 });
+
+/**
+ * Checks if two ranges intersect.
+ *
+ * @param {TSum} range1 - The first range to check.
+ * @param {TSum} range2 - The second range to check.
+ * @returns {boolean} True if the ranges intersect, false otherwise.
+ */
+function rangesIntersect(range1: TSum, range2: TSum) {
+  return (
+    (range1.from >= range2.from && range1.from <= range2.to) ||
+    (range1.to >= range2.from && range1.to <= range2.to) ||
+    (range2.from >= range1.from && range2.from <= range1.to) ||
+    (range2.to >= range1.from && range2.to <= range1.to)
+  );
+}
+
+
+
+export default router;
