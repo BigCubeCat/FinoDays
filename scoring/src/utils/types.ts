@@ -1,6 +1,4 @@
-export type TProvision = 'Нет' | 'Поручительство' | 'Автомобиль' | 'Недвижимость' | 'Бизнес' | 'Имущество';
-
-export type UserDto = {
+export type TUser = {
   name: string;
   experience: number;
   count: number;
@@ -10,3 +8,5 @@ export type UserDto = {
   phone: string;
   provision: TProvision;
 }
+
+export type TProvision = 'none' | 'surely' | 'transport' | 'estate' | 'business' | 'property';

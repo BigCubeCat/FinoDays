@@ -5,6 +5,7 @@ import express from 'express';
 import morgan from 'morgan';
 
 import indexRouter from './routers/indexRouter';
+import getRouter from './routers/getRouter';
 
 const app = express();
 app.use(cors());
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
+app.use('/get', getRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

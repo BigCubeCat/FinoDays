@@ -6,5 +6,7 @@ export type TUserDto = {
   consumption: number;
   age: number;
   phone: string;
-  provision: string;
+  provision: TProvision;
 };
+
+export type TProvision = 'none' | 'surely' | 'transport' | 'estate' | 'business' | 'property';

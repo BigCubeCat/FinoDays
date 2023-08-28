@@ -1,4 +1,4 @@
-import { TProvision, UserDto } from './types';
+import { TProvision, TUser } from './types';
 
 /**
  * Calculates the age score based on the given age.
@@ -33,8 +33,12 @@ const loanScore = (loanPercent: number) => {
     return 43;
   } else if (loanPercent < 0.71) {
     return 21;
+  } else if (loanPercent < 0.91) {
+    return 10;
+  } else if (loanPercent >= 1) {
+    return 0;
   }
-  return 10;
+  return 5;
 };
 
 const countLoansScore = (count: number) => {
@@ -50,17 +54,17 @@ const countLoansScore = (count: number) => {
 
 const provisionScore = (prov: TProvision) => {
   switch (prov) {
-    case 'Нет':
+    case 'none':
       return 15;
-    case 'Поручительство':
+    case 'surely':
       return 28;
-    case 'Автомобиль':
+    case 'transport':
       return 46;
-    case 'Недвижимость':
+    case 'estate':
       return 68;
-    case 'Бизнес':
+    case 'business':
       return 50;
-    case 'Имущество':
+    case 'property':
       return 35;
   }
 };
@@ -68,16 +72,16 @@ const provisionScore = (prov: TProvision) => {
 /**
  * Calculates the sum of scores based on the user's information.
  *
- * @param {UserDto} user - The user object containing the user's information.
+ * @param {TUserDTO} user - The user object containing the user's information.
  * @return {number} The sum of the scores.
  */
-export default function calculateSum(user: UserDto) {
+export default function calculateSum(user: TUser) {
   const percent = user.consumption / user.income;
   const result = ageScore(user.age) +
     countLoansScore(user.count) +
     expScore(user.experience) +
     loanScore(percent) +
     provisionScore(user.provision);
-  console.log(result);
+  // console.log(result);
   return result;
 }
