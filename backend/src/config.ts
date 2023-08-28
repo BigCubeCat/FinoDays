@@ -1,7 +1,7 @@
 export type TConfig = {
-  api_address: string,
-  scoring_address: string,
-  port: number,
+  api_address: string;
+  scoring_address: string;
+  port: number;
 };
 
 export const config: TConfig = {
@@ -11,8 +11,12 @@ export const config: TConfig = {
 };
 
 export const loadConfig = () => {
-  config.api_address = process.env.API_ADDRESS ? process.env.API_ADDRESS : config.api_address;
-  config.scoring_address = process.env.SCORING_ADDRESS ? process.env.SCORING_ADDRESS : config.scoring_address;
+  config.api_address = process.env.API_ADDRESS
+    ? process.env.API_ADDRESS
+    : config.api_address;
+  config.scoring_address = process.env.SCORING_ADDRESS
+    ? process.env.SCORING_ADDRESS
+    : config.scoring_address;
 
   config.port = Number(process.env.PORT ? process.env.PORT : config.port);
 };

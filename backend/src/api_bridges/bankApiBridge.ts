@@ -5,15 +5,6 @@ import {config} from '../config';
 import {TPlanRequestDTO} from '../dtos/requestDTO';
 import {fetchPost} from './utils';
 
-
-async function getPlansFromApi(score: number, plan: TPlanRequestDTO): Promise<TPlanDTO[]> {
-  const body = {
-    score: score,
-    plan: plan,
-  };
-  return (await fetchPost(config.api_address, body));
-}
-
 export async function getPlans(
   user: TUserDto | undefined,
   plan: TPlanRequestDTO,
@@ -23,8 +14,10 @@ export async function getPlans(
     if (user) {
       userScore = await getUserScore(user);
     }
-    console.log('userScore = ', userScore);
-    return await getPlansFromApi(userScore, plan);
+    return await fetchPost(config.api_address, {
+      score: userScore,
+      plan: plan,
+    });
   } catch (error) {
     console.log('error = ', error);
     return [];
