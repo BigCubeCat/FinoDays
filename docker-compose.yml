@@ -6,10 +6,8 @@ services:
       - ${BACK_PORT}:${BACK_PORT}
     environment:
       - PORT=${BACK_PORT}
-      - API_HOST=bank_api
-      - API_PORT=${API_PORT}
-      - SCORING_HOST=scoring
-      - SCORING_PORT=${SCORING_PORT}
+      - API_ADDRESS=http://bank_api:${API_PORT}
+      - SCORING_ADDRESS=http://scoring:${SCORING_PORT}
     stdin_open: true
     tty: true
 

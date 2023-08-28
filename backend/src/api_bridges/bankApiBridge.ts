@@ -11,8 +11,7 @@ async function getPlansFromApi(score: number, plan: TPlanRequestDTO): Promise<TP
     score: score,
     plan: plan,
   };
-  const address = `http://${config.api.host}:${config.api.port}/get/match`;
-  return (await fetchPost(address, body));
+  return (await fetchPost(config.api_address, body));
 }
 
 export async function getPlans(

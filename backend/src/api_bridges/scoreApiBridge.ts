@@ -9,7 +9,6 @@ import {fetchPost} from './utils';
  * @return {Promise<number>} A promise that resolves to the user's score.
  */
 export const getUserScore = async (user: TUserDto): Promise<number> => {
-  const address = `http://${config.scoring.host}:${config.scoring.port}/`;
-  const response = await fetchPost(address, user);
+  const response = await fetchPost(config.scoring_address, user);
   return response?.score | Infinity;
 };
