@@ -7,14 +7,23 @@
   },
   "host": "localhost:3000",
   "basePath": "/",
-  "schemes": ["http", "https"],
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/": {
       "get": {
-        "tags": ["main"],
-        "description": "Endpoint to load recomendations",
+        "tags": [
+          "main"
+        ],
+        "description": "Endpoint to load recommendations",
         "parameters": [
           {
             "name": "obj",
@@ -29,6 +38,19 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/plan/": {
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -113,7 +135,10 @@
           "example": ""
         }
       },
-      "required": ["name", "age"]
+      "required": [
+        "name",
+        "age"
+      ]
     }
   }
 }

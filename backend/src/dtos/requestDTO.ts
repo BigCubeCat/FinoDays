@@ -14,5 +14,8 @@ export type TApiRequestDTO = {
 
 export type TPlanRequestDTO = {
   sum: TSum,
-  term: {unit: string; count: number},
+  term: {
+    unit: string;
+    count: number
+  },
 }

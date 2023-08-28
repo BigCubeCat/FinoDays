@@ -26,40 +26,45 @@ router.post('/', async function (req, res, _next) {
  * @throws {Error} If the body is empty or if any required fields are missing.
  */
 function validateBody(body: TApiRequestDTO) {
-  if (!body) {
-    throw new Error('Body is empty');
-  }
-  if (!body.user) {
-    throw new Error('User is empty');
-  }
-  if (!body.plan) {
-    throw new Error('Plan is empty');
-  }
-  // User's fields
-  if (!body.user.age) {
-    throw new Error('Age is empty');
-  }
-  if (!body.user.name) {
-    throw new Error('User\'s name is empty');
-  }
-  if (!body.user.phone) {
-    throw new Error('User\'s phone is empty');
-  }
-  if (!body.user.experience) {
-    throw new Error('User\'s experience is empty');
-  }
-  if (!body.user.count) {
-    throw new Error('User\'s count is empty');
-  }
-  // Plan's fields
-  if (!body.plan.term) {
-    throw new Error('Loan term is empty');
-  }
-  if (!body.plan.term.count) {
-    throw new Error('Loan term count is empty');
-  }
-  if (!body.plan.sum) {
-    throw new Error('Loan sum is empty');
+  try {
+    if (!body) {
+      throw new Error('Body is empty');
+    }
+    if (!body.user) {
+      throw new Error('User is empty');
+    }
+    if (!body.plan) {
+      throw new Error('Plan is empty');
+    }
+    // User's fields
+    if (!body.user.age) {
+      throw new Error('Age is empty');
+    }
+    if (!body.user.name) {
+      throw new Error('User\'s name is empty');
+    }
+    if (!body.user.phone) {
+      throw new Error('User\'s phone is empty');
+    }
+    if (!body.user.experience) {
+      throw new Error('User\'s experience is empty');
+    }
+    if (!body.user.count) {
+      throw new Error('User\'s count is empty');
+    }
+    // Plan's fields
+    if (!body.plan.term) {
+      throw new Error('Loan term is empty');
+    }
+    if (!body.plan.term.count) {
+      throw new Error('Loan term count is empty');
+    }
+    if (!body.plan.sum) {
+      throw new Error('Loan sum is empty');
+    }
+  } catch (e) {
+    console.log(e)
+    throw e;
   }
 }
 
