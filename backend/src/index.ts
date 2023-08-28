@@ -23,7 +23,7 @@ app.use('/', indexRouter);
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
