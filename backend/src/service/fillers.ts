@@ -1,25 +1,31 @@
-import {TApiRequestDTO} from '../dtos/requestDTO';
+import {TPlanRequestDTO} from '../dtos/requestDTO';
+import {TUserDto} from '../dtos/userDTO';
 
 /**
- * Generates a new API request body by filling in default values for missing properties.
+ * Generates a new plan DTO by filling in default values for missing properties.
  *
- * @param {TApiRequestDTO} body - The original API request body.
- * @return {TApiRequestDTO} - The new API request body with default values filled in.
+ * @param {TPlanRequestDTO} plan - The original DTO.
  */
-export function fillBody(body: TApiRequestDTO): TApiRequestDTO {
-  let newBody = structuredClone(body);
-  if (!body.user.finance.income || !body.user.finance.consumption) {
-    body.user.finance.consumption = body.user.finance.percent || 100;
-    body.user.finance.income = 100;
+export const fillPlan = (plan: TPlanRequestDTO) => {
+  if (plan.sum.from) {
+    plan.sum.from = 0;
   }
-  if (!body.user.provision) {
-    newBody.user.provision = 'none';
+  if (plan.sum.to) {
+    plan.sum.to = Infinity;
   }
-  if (!body.plan.sum.from) {
-    newBody.plan.sum.from = 0;
+};
+
+/**
+ * Generates a new user DTO by filling in default values for missing properties.
+ *
+ * @param {TUserDto} user - The original DTO.
+ */
+export const fillUser = (user: TUserDto) => {
+  if (!user.finance.income || !user.finance.consumption) {
+    user.finance.consumption = user.finance.percent || 100;
+    user.finance.income = 100;
   }
-  if (!body.plan.sum.to) {
-    newBody.plan.sum.to = Infinity;
+  if (user.provision) {
+    user.provision = 'none';
   }
-  return newBody;
-}
+};

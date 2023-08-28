@@ -4,6 +4,7 @@ import {TUserDto} from '../dtos/userDTO';
 type TValidateResult = {
   user: undefined | TUserDto;
   plan: undefined | TPlanRequestDTO;
+  error: string;
 };
 
 const validateUser = (user: TUserDto) => {
@@ -11,26 +12,23 @@ const validateUser = (user: TUserDto) => {
     return 'Age is empty';
   }
   if (!user.name) {
-    return "User's name is empty";
+    return 'User\'s name is empty';
   }
   if (!user.phone) {
-    return "User's phone is empty";
+    return 'User\'s phone is empty';
   }
   if (!user.experience) {
-    return "User's experience is empty";
+    return 'User\'s experience is empty';
   }
-  if (!user.count) {
-    return "User's count is empty";
+  if (!user.finance) {
+    return 'User\'s finance is empty';
   }
   return '';
 };
 
 const validatePlan = (plan: TPlanRequestDTO) => {
-  if (!plan.term) {
-    return 'Loan term is empty';
-  }
-  if (!plan.term.count) {
-    return 'Loan term count is empty';
+  if (!plan.duration) {
+    return 'Duration is empty';
   }
   if (!plan.sum) {
     return 'Loan sum is empty';
@@ -50,27 +48,29 @@ export const validateBody = (body: TApiRequestDTO): TValidateResult => {
   const result: {
     user: undefined | TUserDto;
     plan: undefined | TPlanRequestDTO;
+    error: string;
   } = {
     user: undefined,
     plan: undefined,
+    error: '',
   };
   if (!body) {
-    console.error('Body is empty');
+    result.error = 'Body is empty';
     return result;
   } else if (!body.user) {
     const userCheck = validateUser(body.user);
     if (userCheck) {
-      console.error(userCheck);
+      result.error = userCheck;
     } else {
       result.user = body.user;
     }
   }
   if (!body.plan) {
-    console.error('Plan is empty');
+    result.error = 'Plan is empty';
   } else {
     const planCheck = validatePlan(body.plan);
     if (planCheck) {
-      console.error(planCheck);
+      result.error = planCheck;
     } else {
       result.plan = body.plan;
     }
