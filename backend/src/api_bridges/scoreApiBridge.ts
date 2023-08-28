@@ -10,9 +10,12 @@ import {fetchPost} from './utils';
  */
 export const getUserScore = async (user: TUserDto): Promise<number> => {
   try {
+    console.log("here")
     const response = await fetchPost(config.scoring_address, user);
+    console.log("resp = ", response);
     return response?.score | Infinity;
   } catch (e) {
+    console.error(e);
     return Infinity;
   }
 };

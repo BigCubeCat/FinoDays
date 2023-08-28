@@ -14,7 +14,7 @@ export async function getPlans(
     if (user) {
       userScore = await getUserScore(user);
     }
-    return await fetchPost(config.api_address, {
+    return await fetchPost(config.api_address + "/plan/match", {
       score: userScore,
       plan: plan,
     });

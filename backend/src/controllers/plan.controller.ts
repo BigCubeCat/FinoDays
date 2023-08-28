@@ -12,11 +12,12 @@ export async function choosePlans(req: Request, res: Response) {
       return;
     }
     if (body.user) {
-      fillUser(body.user);
+      body.user = fillUser(body.user);
     }
     if (body.plan) {
-      fillPlan(body.plan);
+      body.plan = fillPlan(body.plan);
     }
+    console.log("body = ", body);
     const plans = await getPlans(body.user, body.plan as TPlanRequestDTO);
     res.status(200).json({
       plans: plans,

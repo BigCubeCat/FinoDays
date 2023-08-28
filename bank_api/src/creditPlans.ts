@@ -2,10 +2,11 @@ import {TPlanDTO} from './dto/planDTO';
 
 export const plans: TPlanDTO[] = [
   {
+    id: 0,
     title: 'Первый ипотечный',
     type: 'mortgage',
     sum: {from: 1000000, to: 5000000},
-    term: {unit: 'year', count: 30},
+    duration: 30,
     rate: 7.5,
     condition: {
       provision: 'estate',
@@ -13,10 +14,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 1,
     title: 'Военная ипотека',
     type: 'mortgage',
     sum: {from: 100000, to: 150000000},
-    term: {unit: 'year', count: 20},
+    duration: 20,
     rate: 4.7,
     condition: {
       provision: 'none',
@@ -24,10 +26,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 2,
     title: 'Потребительский Express',
     type: 'credit',
     sum: {from: 50000, to: 300000},
-    term: {unit: 'month', count: 24},
+    duration: 24,
     rate: 12.0,
     condition: {
       provision: 'surely',
@@ -35,10 +38,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 3,
     title: 'Молодежное начало',
     type: 'credit',
     sum: {from: 10000, to: 100000},
-    term: {unit: 'month', count: 12},
+    duration: 2,
     rate: 9.8,
     condition: {
       provision: 'surely',
@@ -46,10 +50,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 4,
     title: 'Автофинансирование',
     type: 'car-loan',
     sum: {from: 200000, to: 2000000},
-    term: {unit: 'month', count: 48},
+    duration: 5,
     rate: 8.2,
     condition: {
       provision: 'transport',
@@ -57,10 +62,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 5,
     title: 'Рефинансирование',
     type: 'credit',
     sum: {from: 50000, to: 1500000},
-    term: {unit: 'month', count: 60},
+    duration: 8,
     rate: 6.5,
     condition: {
       provision: 'none',
@@ -68,10 +74,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 6,
     title: 'Бизнес-старт',
     type: 'credit',
     sum: {from: 500000, to: 10000000},
-    term: {unit: 'year', count: 10},
+    duration: 90,
     rate: 14.5,
     condition: {
       provision: 'surely',
@@ -79,10 +86,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 7,
     title: 'Образование Plus',
     type: 'credit',
     sum: {from: 20000, to: 500000},
-    term: {unit: 'year', count: 36},
+    duration: 9,
     rate: 10.7,
     condition: {
       provision: 'surely',
@@ -90,10 +98,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 8,
     title: 'Микрозайм Express',
     type: 'credit',
     sum: {from: 1000, to: 10000},
-    term: {unit: 'day', count: 90},
+    duration: 9,
     rate: 15.0,
     condition: {
       provision: 'none',
@@ -101,10 +110,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 9,
     title: 'Инвестиционное финансирование',
     type: 'credit',
     sum: {from: 100000, to: 1000000},
-    term: {unit: 'month', count: 72},
+    duration: 1,
     rate: 11.8,
     condition: {
       provision: 'property',
@@ -112,10 +122,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 10,
     title: 'Строительный кредит',
     type: 'credit',
     sum: {from: 300000, to: 10000000},
-    term: {unit: 'year', count: 20},
+    duration: 10,
     rate: 9.9,
     condition: {
       provision: 'estate',
@@ -123,10 +134,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 11,
     title: 'Туристический заем',
     type: 'credit',
     sum: {from: 5000, to: 50000},
-    term: {unit: 'month', count: 12},
+    duration: 3,
     rate: 13.2,
     condition: {
       provision: 'surely',
@@ -134,10 +146,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 12,
     title: 'Лечебный кредит',
     type: 'credit',
     sum: {from: 20000, to: 200000},
-    term: {unit: 'month', count: 18},
+    duration: 5,
     rate: 7.7,
     condition: {
       provision: 'none',
@@ -145,10 +158,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 13,
     title: 'Военный лечебный кредит',
     type: 'credit',
     sum: {from: 10000, to: 2000000},
-    term: {unit: 'motnh', count: 36},
+    duration: 7,
     rate: 3.7,
     condition: {
       provision: 'none',
@@ -156,10 +170,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 14,
     title: 'Свадебный кредит',
     type: 'credit',
     sum: {from: 10000, to: 100000},
-    term: {unit: 'month', count: 24},
+    duration: 3,
     rate: 10.5,
     condition: {
       provision: 'none',
@@ -167,10 +182,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 15,
     title: 'Сельскохозяйственный займ',
     type: 'credit',
     sum: {from: 100000, to: 3000000},
-    term: {unit: 'year', count: 10},
+    duration: 6,
     rate: 6.9,
     condition: {
       provision: 'property',
@@ -178,10 +194,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 16,
     title: 'Стартап-финансирование',
     type: 'credit',
     sum: {from: 500000, to: 10000000},
-    term: {unit: 'year', count: 15},
+    duration: 16,
     rate: 13.5,
     condition: {
       provision: 'surely',
@@ -189,10 +206,11 @@ export const plans: TPlanDTO[] = [
     },
   },
   {
+    id: 17,
     title: 'Кредитная линия для предприятий',
     type: 'credit',
     sum: {from: 1000000, to: 50000000},
-    term: {unit: 'year', count: 10},
+    duration: 200,
     rate: 9.0,
     condition: {
       provision: 'business',

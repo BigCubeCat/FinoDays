@@ -1,4 +1,4 @@
-import { TProvision, TUser } from './types';
+import {TProvision, TUser} from './types';
 
 /**
  * Calculates the age score based on the given age.
@@ -72,16 +72,14 @@ const provisionScore = (prov: TProvision) => {
 /**
  * Calculates the sum of scores based on the user's information.
  *
- * @param {TUserDTO} user - The user object containing the user's information.
+ * @param {TUser} user - The user object containing the user's information.
  * @return {number} The sum of the scores.
  */
-export default function calculateSum(user: TUser) {
-  const percent = user.consumption / user.income;
-  const result = ageScore(user.age) +
+export default function calculateSum(user: TUser): number {
+  // console.log(result);
+  return ageScore(user.age) +
     countLoansScore(user.count) +
     expScore(user.experience) +
-    loanScore(percent) +
+    loanScore(user.percent / 100) +
     provisionScore(user.provision);
-  // console.log(result);
-  return result;
 }

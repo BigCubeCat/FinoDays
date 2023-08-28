@@ -4,7 +4,7 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/all', function (_req, res, _next) {
+router.get('/all', function(_req, res, _next) {
   res.send({
     plans: plans,
   });
@@ -14,19 +14,14 @@ type TMatchBody = {
   score: number;
   plan: TPlanRequestDTO;
 };
-router.post('/match', function (req, res, _next) {
+router.post('/match', function(req, res, _next) {
   const body: TMatchBody = req.body;
-  let result: TPlanDTO[] = [];
-  plans.forEach((planCmp) => {
-    if (
-      planCmp.condition.user_score <= body.score &&
-      body.plan.term.count <= planCmp.term.count &&
-      body.plan.term.unit == planCmp.term.unit &&
-      rangesIntersect(body.plan.sum, planCmp.sum)
-    ) {
-      result.push(planCmp);
-    }
-  });
+  console.log(body)
+  const result: TPlanDTO[] = plans.filter((plan) =>
+    plan.condition.user_score <= body.score &&
+    (body.plan.duration - plan.duration) < 2 &&
+    body.plan.sum >= plan.sum.from && body.plan.sum <= plan.sum.to,
+  );
   res.send({
     plans: result,
   });

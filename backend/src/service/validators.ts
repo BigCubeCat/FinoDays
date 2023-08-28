@@ -57,7 +57,7 @@ export const validateBody = (body: TApiRequestDTO): TValidateResult => {
   if (!body) {
     result.error = 'Body is empty';
     return result;
-  } else if (!body.user) {
+  } else if (body.user) {
     const userCheck = validateUser(body.user);
     if (userCheck) {
       result.error = userCheck;

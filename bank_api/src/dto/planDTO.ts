@@ -1,8 +1,9 @@
 export type TPlanDTO = {
+  id: number;
   title: string;
   type: TPlanType;
   sum: TSum;
-  term: {unit: string; count: number};
+  duration: number;
   rate: number;
   condition: {provision: string; user_score: number};
 };
@@ -15,6 +16,6 @@ export type TSum = {
 };
 
 export type TPlanRequestDTO = {
-  sum: TSum;
-  term: {unit: string; count: number};
+  sum: number;
+  duration: number;
 };
