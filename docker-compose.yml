@@ -1,18 +1,4 @@
 services:
-  backend:
-    build: ./backend
-    restart: always
-    ports:
-      - ${BACK_PORT}:${BACK_PORT}
-    environment:
-      - PORT=${BACK_PORT}
-      - API_HOST=bank_api
-      - API_PORT=${API_PORT}
-      - SCORING_HOST=scoring
-      - SCORING_PORT=${SCORING_PORT}
-    stdin_open: true
-    tty: true
-
   scoring:
     build: ./scoring
     restart: always
@@ -30,6 +16,18 @@ services:
       - ${API_PORT}:${API_PORT}
     environment:
       - PORT=${API_PORT}
+    stdin_open: true
+    tty: true
+
+  backend:
+    build: ./backend
+    restart: always
+    ports:
+      - ${BACK_PORT}:${BACK_PORT}
+    environment:
+      - PORT=${BACK_PORT}
+      - API_ADDRESS=http://bank_api:${API_PORT}
+      - SCORING_ADDRESS=http://scoring:${SCORING_PORT}
     stdin_open: true
     tty: true
 

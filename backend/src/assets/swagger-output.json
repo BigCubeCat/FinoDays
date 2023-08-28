@@ -14,7 +14,7 @@
     "/": {
       "get": {
         "tags": ["main"],
-        "description": "Endpoint to load recomendations",
+        "description": "Endpoint to load recommendations",
         "parameters": [
           {
             "name": "obj",
@@ -29,6 +29,19 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/plan/": {
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }

@@ -1,37 +1,22 @@
 export type TConfig = {
-  api: {
-    host: string;
-    port: number;
-  },
-  scoring: {
-    host: string;
-    port: number;
-  },
-  port: number
+  api_address: string;
+  scoring_address: string;
+  port: number;
 };
 
 export const config: TConfig = {
-  api: {
-    host: 'localhost',
-    port: 5001,
-  },
-  scoring: {
-    host: 'localhost',
-    port: 5555,
-  },
+  api_address: 'http://localhost:5001',
+  scoring_address: 'http://localhost:5555',
   port: 5000,
 };
 
 export const loadConfig = () => {
-  config.api.host = process.env.API_HOST ? process.env.API_HOST : config.api.host;
-  config.api.port = Number(
-    process.env.API_PORT ? process.env.API_PORT : config.api.port)
-  ;
-
-  config.scoring.host = process.env.SCORING_HOST ? process.env.SCORING_HOST : config.scoring.host;
-  config.scoring.port = Number(
-    process.env.SCORING_PORT ? process.env.SCORING_PORT : config.scoring.port,
-  );
+  config.api_address = process.env.API_ADDRESS
+    ? process.env.API_ADDRESS
+    : config.api_address;
+  config.scoring_address = process.env.SCORING_ADDRESS
+    ? process.env.SCORING_ADDRESS
+    : config.scoring_address;
 
   config.port = Number(process.env.PORT ? process.env.PORT : config.port);
 };

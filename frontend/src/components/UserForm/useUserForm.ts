@@ -4,7 +4,6 @@ import {useAppDispatch, useAppSelector} from '@/app/hooks.ts';
 import {selectUser, setUser} from '@/app/user/userSlice.ts';
 import {TProvisionVariant} from '@/app/types.ts';
 
-
 export default function useUserForm() {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
@@ -20,9 +19,18 @@ export default function useUserForm() {
   const [phone, setPhone] = useState(user.phone);
 
   const saveData = () => {
-    dispatch(setUser({
-      name, count, age, experience, income, consumption, phone, provision,
-    }));
+    dispatch(
+      setUser({
+        name,
+        count,
+        age,
+        experience,
+        income,
+        consumption,
+        phone,
+        provision,
+      }),
+    );
   };
 
   return {

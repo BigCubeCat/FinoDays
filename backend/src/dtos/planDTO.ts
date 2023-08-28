@@ -1,6 +1,7 @@
 import {TSum} from './productDTO';
 
 export type TPlanDTO = {
+  id: number;
   title: string;
   type: TPlanType;
   sum: TSum;
