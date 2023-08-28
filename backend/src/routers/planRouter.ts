@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getUserPlans } from '../api_bridges/bankApiBridge';
+import { getPlans } from '../api_bridges/bankApiBridge';
 import { TApiRequestDTO } from '../dtos/requestDTO';
 
 const router = express.Router();
@@ -10,7 +10,7 @@ router.post('/', async function (req, res, _next) {
     validateBody(req.body);
     const filledBody = fillBody(req.body);
     res.status(200).json({
-      plans: await getUserPlans(filledBody.user, filledBody.plan),
+      plans: await getPlans(filledBody.user, filledBody.plan),
     });
   } catch (error) {
     res.status(400).json({ error });

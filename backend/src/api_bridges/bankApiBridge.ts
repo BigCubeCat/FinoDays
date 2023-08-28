@@ -11,16 +11,20 @@ async function getPlansFromApi(score: number, plan: TPlanRequestDTO): Promise<TP
     score: score,
     plan: plan,
   };
-  const address = `http://${config.api.host}:${config.api.port}/get/match`
+  const address = `http://${config.api.host}:${config.api.port}/get/match`;
   return (await fetchPost(address, body));
 }
 
-export async function getUserPlans(
-  user: TUserDto,
+export async function getPlans(
+  user: TUserDto | undefined,
   plan: TPlanRequestDTO,
 ): Promise<TPlanDTO[]> {
   try {
-    const userScore = await getUserScore(user);
+    let userScore = Infinity; // Если нет пользователь не задан, выдаем все
+    if (user) {
+      userScore = await getUserScore(user);
+    }
+    console.log('userScore = ', userScore);
     return await getPlansFromApi(userScore, plan);
   } catch (error) {
     console.log('error = ', error);
