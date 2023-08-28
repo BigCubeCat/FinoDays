@@ -7,7 +7,7 @@
     "start:dev": "npx nodemon",
     "start": "yarn build && node build/index.js",
     "lint": "eslint . --ext .ts",
-    "gendoc": "node swagger.js"
+    "gendoc": "node src/swagger.js"
   },
   "license": "MIT",
   "devDependencies": {

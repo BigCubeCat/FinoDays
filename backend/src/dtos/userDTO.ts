@@ -7,4 +7,4 @@ export type TUserDto = {
   age: number;
   phone: string;
   provision: string;
-}
+};
