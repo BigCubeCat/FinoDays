@@ -5,7 +5,11 @@ services:
     ports:
       - ${BACK_PORT}:${BACK_PORT}
     environment:
-      - BACK_PORT=${BACK_PORT}
+      - PORT=${BACK_PORT}
+      - API_HOST=bank_api
+      - API_PORT=${API_PORT}
+      - SCORING_HOST=scoring
+      - SCORING_PORT=${SCORING_PORT}
     stdin_open: true
     tty: true
 

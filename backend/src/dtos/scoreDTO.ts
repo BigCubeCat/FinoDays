@@ -1,3 +1,3 @@
 export type TScoreResponseDTO = {
-    score: number
-}
+  score: number;
+};

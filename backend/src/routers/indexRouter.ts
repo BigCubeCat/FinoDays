@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', function (req, res, next) {
   /* 	#swagger.tags = ['main']
-        #swagger.description = 'Endpoint to load recomendations' */
+        #swagger.description = 'Endpoint to load recommendations' */
 
   /*	#swagger.parameters['obj'] = {
           in: 'body',
