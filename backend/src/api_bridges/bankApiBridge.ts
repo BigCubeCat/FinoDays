@@ -2,6 +2,7 @@ import http from 'http';
 import {TPlanDTO, TPlanResponseDTO, TPlanType} from '../dtos/planDTO';
 import {getUserScore} from './scoreApiBridge';
 import {TUserDto} from '../dtos/userDTO';
+import {config} from '../config';
 
 /**
  * Retrieves plans from the API based on a given score and type.
@@ -17,8 +18,8 @@ function getPlansFromApi(score: number, type: TPlanType): Promise<TPlanDTO[]> {
   });
 
   const options = {
-    host: 'localhost',
-    port: 5001,
+    host: config.api.host,
+    port: config.api.port,
     path: `/get/match`,
     method: 'POST',
     headers: {

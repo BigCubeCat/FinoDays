@@ -7,6 +7,9 @@ import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import swaggerFile from './assets/swagger-output.json';
 
+import {loadConfig, config} from './config';
+loadConfig();
+
 import indexRouter from './routers/indexRouter';
 import planRouter from './routers/planRouter';
 
@@ -27,14 +30,11 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
-const port = process.env.BACK_PORT;
-console.log('port = ', port);
-
-app.set('port', port);
+app.set('port', config.port);
 
 const server = http.createServer(app);
 server.on('listening', onListening);
-server.listen(port);
+server.listen(config.port);
 
 function onListening() {
   const addr = server.address();

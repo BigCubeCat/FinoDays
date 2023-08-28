@@ -1,6 +1,7 @@
 import http from 'http';
 import {TUserDto} from '../dtos/userDTO';
 import {TScoreResponseDTO} from '../dtos/scoreDTO';
+import {config} from '../config';
 
 /**
  * Retrieves the user score from the scoring API.
@@ -11,8 +12,8 @@ import {TScoreResponseDTO} from '../dtos/scoreDTO';
 export function getUserScore(user: TUserDto): Promise<number> {
   const body = JSON.stringify(user);
   const options = {
-    host: 'localhost',
-    port: 5555,
+    host: config.scoring.host,
+    port: config.scoring.port,
     path: '/',
     method: 'POST',
     headers: {
