@@ -27,6 +27,11 @@ router.post('/match', function(req, res, _next) {
   });
 });
 
+router.post('/buy/:id', function(req, res, _next) {
+  res.send({
+    status: (Math.random() < 0.5) ? "decline" : "accept",
+  });
+});
 /**
  * Checks if two ranges intersect.
  *

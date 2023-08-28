@@ -5,29 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="591e027b-2c39-4f83-8f35-945f72bafd37" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/api_bridges/bankApiBridge.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/api_bridges/bankApiBridge.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/api_bridges/scoreApiBridge.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/api_bridges/scoreApiBridge.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/controllers/plan.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controllers/plan.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/dtos/planDTO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/dtos/planDTO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/dtos/productDTO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/dtos/productDTO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/service/fillers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/service/fillers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/routers/planRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/routers/planRouter.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bank_api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bank_api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank_api/src/creditPlans.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../bank_api/src/creditPlans.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank_api/src/dto/planDTO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../bank_api/src/dto/planDTO.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bank_api/src/routers/planRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../bank_api/src/routers/planRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/user/userSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/user/userSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/UserForm/useUserForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/UserForm/useUserForm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routers/indexRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/indexRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/scoringAlgorithm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/scoringAlgorithm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +68,7 @@
       <workItem from="1693127233564" duration="23000" />
       <workItem from="1693127263408" duration="799000" />
       <workItem from="1693151126314" duration="748000" />
-      <workItem from="1693251769724" duration="725000" />
+      <workItem from="1693251769724" duration="776000" />
     </task>
     <servers />
   </component>
