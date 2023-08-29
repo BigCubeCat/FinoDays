@@ -6,13 +6,11 @@ import Main from '@/components/Main/Main.tsx';
 
 export default function App() {
   return (
-    <Box sx={{width: '100vw'}}>
-      <ThemeProvider theme={customTheme}>
+    <ThemeProvider theme={customTheme}>
+      <Box sx={{width: '100vw'}}>
         <Header />
-        <Box sx={{display: 'flex', justifyContent: 'center'}}>
-          <Main />
-        </Box>
-      </ThemeProvider>
-    </Box>
+        <Main />
+      </Box>
+    </ThemeProvider>
   );
 }

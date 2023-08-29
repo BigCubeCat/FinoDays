@@ -1,14 +1,16 @@
 import {Box} from '@mui/material';
-import UserForm from '@/components/UserForm/UserForm.tsx';
+
+import Tabs from '@/components/Main/TabsComponent.tsx';
+import {useIsSmall} from '@/utils/useWindowDimensions.ts';
 
 export default function Main() {
+  const isSmall = useIsSmall();
   return (
-    <Box
-      sx={{
-        marginTop: 5,
-      }}
-    >
-      <UserForm />
+    <Box sx={{
+      m: isSmall ? 0 : 5,
+      marginBottom: 0,
+    }}>
+      <Tabs />
     </Box>
   );
 }
