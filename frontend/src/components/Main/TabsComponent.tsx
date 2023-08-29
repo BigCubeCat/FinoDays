@@ -4,6 +4,7 @@ import {Box, Paper, Tab, Tabs} from '@mui/material';
 import ProductForm from '@/components/forms/ProductForm/ProductForm.tsx';
 import UserForm from '@/components/forms/UserForm/UserForm.tsx';
 import HistoryForm from '@/components/forms/HistoryForm/HistoryForm.tsx';
+import ResultDialog from '../Result/ResultDialog';
 
 export default function MyTabs() {
   const [value, setValue] = useState(0);
@@ -40,6 +41,7 @@ export default function MyTabs() {
       sx={{
         display: 'flex', justifyContent: 'center',
       }}>
+      {isOpen && <ResultDialog open={isOpen} close={() => setIsOpen(false)} />}
       <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
         <Tabs
           value={value}
