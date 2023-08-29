@@ -1,8 +1,7 @@
 export type TLoan = {
-  amount: number | undefined;
-  percent: number | undefined;
-  payment: number | undefined;
-  purpose: string;
+  sum: number;
+  duration: number;
+  purpose?: string;
 };
 
 export type TUser = {

@@ -6,16 +6,18 @@ import {selectUser} from '@/app/user/userSlice.ts';
 import {loadResult} from '@/app/response/responseAPI.ts';
 import {TResult} from '@/app/types.ts';
 import ResultCard from './ResultCard';
+import {selectLoan} from '@/app/loan/loanSlice.ts';
 
 export default function ResultDialog(props: {
   open: boolean;
   close: () => void;
 }) {
   const user = useAppSelector(selectUser).user;
+  const loan = useAppSelector(selectLoan).loan;
   const [results, setResults] = useState<TResult[]>([]);
   useEffect(() => {
     const fetchAPI = async () => {
-      const data = await loadResult(user);
+      const data = await loadResult(user, loan);
       console.log(data);
       setResults(data.plans);
     };

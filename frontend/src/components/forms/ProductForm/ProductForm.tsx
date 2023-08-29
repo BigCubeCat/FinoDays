@@ -58,9 +58,9 @@ export default function ProductForm(props: {next: () => void}) {
           <Box>
             <Typography variant={'h6'}>Срок займа в годах</Typography>
             <TextField
-              type="number"
-              value={formData.time}
-              onChange={(e) => formData.setTime(Number(e.target.value))}
+              type='number'
+              value={formData.duration}
+              onChange={(e) => formData.setDuration(Number(e.target.value))}
               InputProps={{inputProps: {min: 1, max: 100}}}
             />
           </Box>
@@ -71,17 +71,15 @@ export default function ProductForm(props: {next: () => void}) {
           minimum={1000}
           maximum={10000000}
           step={1000}
-          label="Сумма кредита"
+          label='Сумма кредита'
           enableButtons
         />
-        <MoneyInput
+        <TextField
+          fullWidth
+          disabled
+          label='Ежемесячный платеж'
+          type={'number'}
           value={formData.payment}
-          setValue={formData.setPayment}
-          minimum={1000}
-          maximum={formData.sum}
-          step={1000}
-          label="Ежемесячный платеж"
-          enableButtons
         />
       </Box>
       <Button
