@@ -1,4 +1,4 @@
-import {Box, Dialog, DialogTitle, Typography} from '@mui/material';
+import {Box, Button, Dialog, DialogTitle, Typography} from '@mui/material';
 import Header from '../AppBar/Header';
 import {useAppSelector} from '@/app/hooks.ts';
 import {useEffect, useState} from 'react';
@@ -26,6 +26,9 @@ export default function ResultDialog(props: {open: boolean, close: () => void}) 
         <Typography variant={'h5'} textAlign={'center'}>
           На основании ваших ответов мы модобрали для вас лучшие предложения
         </Typography>
+        <Button variant={"text"} onClick={() => props.close()}>
+          Изменить данные
+        </Button>
       </DialogTitle>
       <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         {results.map(result => <ResultCard result={result} />)}
