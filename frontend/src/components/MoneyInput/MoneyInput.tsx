@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {Box, Slider, Typography, IconButton, Paper} from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import {customValue, RU} from '@/components/forms/utils.ts';
+import {customValue} from '@/components/forms/utils.ts';
 import AccurateInput from './AccurateInput';
 
 interface MoneyProps {

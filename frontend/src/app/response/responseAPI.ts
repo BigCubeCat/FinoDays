@@ -1,8 +1,10 @@
 import axios from 'axios';
 import {TLoan, TUser} from '@/app/types.ts';
 
+const HOST = "localhost";
+
 async function postPlan(user: TUser, plan: TLoan) {
-  return await axios.post('http://localhost:5000/plan/', {
+  return await axios.post(`http://${HOST}:5000/plan/`, {
     user,
     plan,
   });
@@ -10,7 +12,7 @@ async function postPlan(user: TUser, plan: TLoan) {
 
 export async function buyLoan(id: number) {
   return await axios
-    .post(`http://localhost:5000/plan/buy/${id}`)
+    .post(`http://${HOST}:5000/plan/buy/${id}`)
     .then((resp) => resp.data);
 }
 

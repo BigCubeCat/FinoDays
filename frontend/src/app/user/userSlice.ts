@@ -11,14 +11,14 @@ const initialState: IUserState = {
   user: {
     name: 'guest',
     age: 40,
-    experience: 1323,
+    experience: 5,
     count: 1,
     income: 1000000,
-    consumption: 123,
-    phone: '+79999999',
+    consumption: 10000,
+    phone: '+7',
     region: '22',
     provision: 'none',
-    inn: '2222',
+    inn: '0000000000',
   },
 };
 
