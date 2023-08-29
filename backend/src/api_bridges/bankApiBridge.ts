@@ -1,12 +1,12 @@
 import {TPlanDTO} from '../dtos_v2/planDTO';
 import {getUserScore} from './scoreApiBridge';
-import {TUserDto} from '../dtos_v2/userDTO';
+import {TUser} from '../dtos_v2/userDTO';
 import {config} from '../config';
 import {TPlanRequestDTO} from '../dtos/requestDTO';
 import {fetchPost} from './utils';
 
 export async function getPlans(
-  user: TUserDto | undefined,
+  user: TUser | undefined,
   plan: TPlanRequestDTO,
 ): Promise<TPlanDTO[]> {
   try {

@@ -4,7 +4,6 @@ export type TUser = {
     count: number;
     income: number;
     consumption: number;
-    percent: number;
     experience: number;
   };
   age: number;
@@ -14,8 +13,10 @@ export type TUser = {
   inn: string;
   region: string;
   target: TLoanTarget;
+  provision: TProvision;
 }
 
 export type TFamilyStatus = 'single' | 'married';
 export type TLoanTarget = 'another' | 'car' | 'estate' | 'business' | 'renovation' | 'education' | 'refinance' | 'traveling' | 'treatment';
 export type TProductDto = 'salary_card' | 'credit_card' | 'deposite'
+export type TProvision = 'none' | 'flat' | 'house' | 'land' | 'car';

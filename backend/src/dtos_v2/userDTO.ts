@@ -1,11 +1,10 @@
-export type TUserDto = {
+export type TUser = {
     name: string;
     finance: {
-        count: number;
-        income: number;
-        consumption: number;
-        percent: number;
-        experience: number;
+      count: number;
+      income: number;
+      consumption: number;
+      experience: number;
     };
     age: number;
     phone: string;
@@ -14,8 +13,10 @@ export type TUserDto = {
     inn: string;
     region: string;
     target: TLoanTarget;
-}
-
-type TFamilyStatus = 'single' | 'married';
-export type TLoanTarget = 'another' | 'car' | 'estate' | 'business' | 'renovation' | 'education' | 'refinance' | 'traveling' | 'treatment';
-type TProductDto = 'salary_card' | 'credit_card' | 'deposite'
+    provision: TProvision;
+  }
+  
+  export type TFamilyStatus = 'single' | 'married';
+  export type TLoanTarget = 'another' | 'car' | 'estate' | 'business' | 'renovation' | 'education' | 'refinance' | 'traveling' | 'treatment';
+  export type TProductDto = 'salary_card' | 'credit_card' | 'deposite'
+  export type TProvision = 'none' | 'flat' | 'house' | 'land' | 'car';

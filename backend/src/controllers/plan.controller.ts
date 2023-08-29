@@ -31,13 +31,14 @@ export async function choosePlans(req: Request, res: Response) {
 }
 
 export async function buyLoan(req: Request, res: Response) {
+  const address = `${config.api_address}/plan/buy/${req.params.id}`;
+  console.log(address);
+  
   try {
-    const address = config.api_address + '/plan/buy/' + req.params.id;
-    console.log(address);
     const resp = await fetchPost(address, {});
-    res.status(200).json({status: resp.status});
+    res.status(200).json({ status: resp.status });
   } catch (e) {
     console.error(e);
-    res.status(400).json({error: e});
+    res.status(400).json({ error: e });
   }
 }
