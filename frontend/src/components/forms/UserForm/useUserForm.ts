@@ -1,26 +1,26 @@
-import {useState} from 'react';
-
-import {useAppSelector} from '@/app/hooks.ts';
-import {selectUser} from '@/app/user/userSlice.ts';
+import {useAppDispatch, useAppSelector} from '@/app/hooks.ts';
+import {selectUser, setUser} from '@/app/user/userSlice.ts';
 
 export default function useUserForm() {
-  const user = useAppSelector(selectUser);
-
-  const [name, setName] = useState<string>(user.name);
-  const [age, setAge] = useState(user.age);
-
-  const [phone, setPhone] = useState(user.phone);
-
-  const saveData = () => {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectUser).user;
+  console.log(user);
+  const setNameHandler = (name: string) => {
+    dispatch(setUser({...user, name: name}));
+  };
+  const setAgeHandler = (age: number) => {
+    dispatch(setUser({...user, age: age}));
+  };
+  const setPhoneHandler = (phone: string) => {
+    dispatch(setUser({...user, phone: phone}));
   };
 
   return {
-    name,
-    setName,
-    age,
-    setAge,
-    phone,
-    setPhone,
-    saveData,
+    name: user.name,
+    setName: setNameHandler,
+    age: user.age,
+    setAge: setAgeHandler,
+    phone: user.phone,
+    setPhone: setPhoneHandler,
   };
 }
