@@ -23,7 +23,7 @@ services:
     restart: always
     environment:
       - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
-      - API_ADDRESS=http://bank_api:${API_PORT}
+      - API_ADDRESS=http://backend:${BACK_PORT}
   backend:
     build: ./backend
     restart: always
@@ -39,4 +39,4 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - 80:3000
+      - 3000:3000

@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY go.mod ./
 COPY go.sum ./
+RUN test -f ./chat.db && rm ./chat.db || true
 RUN go mod download
 
 COPY . .

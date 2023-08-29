@@ -18,6 +18,7 @@ var BANK_API = os.Getenv("API_ADDRESS")
 // It takes a pointer to a User struct as a parameter and returns a slice of Plan structs.
 func GetUserPlans(user *database.User) []Plan {
 	url := BANK_API + "/plan"
+	fmt.Println(url)
 	body, _ := json.Marshal(createRequestBody(user))
 	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(body))
 	req.Header.Set("Content-Type", "application/json")
