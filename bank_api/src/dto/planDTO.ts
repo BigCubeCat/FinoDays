@@ -5,7 +5,7 @@ export type TPlanDTO = {
   sum: TSum;
   duration: number;
   rate: number;
-  condition: {provision: string; user_score: number};
+  condition: {provision: string; user_score?: number};
 };
 
 export type TPlanTarget = 'another' | 'car' | 'estate' | 'business' | 'renovation' | 'education' | 'refinance' | 'traveling' | 'treatment';

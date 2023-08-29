@@ -93,7 +93,7 @@ func StringToProvision(str string) database.Provision {
 
 func PlanToText(plan api.Plan) string {
 	str := ""
-	str += BoldText(plan.Title) + "\n" + "\n"
+	str += BoldText(fmt.Sprintf("%d. %s", plan.Id, plan.Title)) + "\n" + "\n"
 	str += ItalicText(fmt.Sprintf("Сумма от %d до %d руб.", plan.Sum.From, plan.Sum.To)) + "\n"
 	str += ItalicText(fmt.Sprintf("Срок до %d лет", plan.Duration)) + "\n"
 	str += ItalicText(fmt.Sprintf("Ставка от %.2f%%", plan.Rate)) + "\n"
