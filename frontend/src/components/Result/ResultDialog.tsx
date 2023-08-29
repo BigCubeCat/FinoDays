@@ -23,12 +23,13 @@ export default function ResultDialog(props: {open: boolean, close: () => void}) 
     <Dialog onClose={() => props.close()} open={props.open} fullScreen>
       <Header />
       <DialogTitle>
+        <Button variant={"text"} onClick={() => props.close()}>
+          Назад
+        </Button>
         <Typography variant={'h5'} textAlign={'center'}>
           На основании ваших ответов мы модобрали для вас лучшие предложения
         </Typography>
-        <Button variant={"text"} onClick={() => props.close()}>
-          Изменить данные
-        </Button>
+
       </DialogTitle>
       <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         {results.map(result => <ResultCard result={result} />)}
