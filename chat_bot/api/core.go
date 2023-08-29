@@ -7,14 +7,17 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"psb_bot/database"
 )
+
+var BANK_API = os.Getenv("API_ADDRESS")
 
 // GetUserPlans retrieves the plans for a user.
 //
 // It takes a pointer to a User struct as a parameter and returns a slice of Plan structs.
 func GetUserPlans(user *database.User) []Plan {
-	url := "http://localhost:5000/plan"
+	url := BANK_API + "/plan"
 	body, _ := json.Marshal(createRequestBody(user))
 	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(body))
 	req.Header.Set("Content-Type", "application/json")
