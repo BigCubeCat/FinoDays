@@ -21,9 +21,7 @@ export async function choosePlans(req: Request, res: Response) {
     }
     console.log('body = ', body);
     const plans = await getPlans(body.user, body.plan as TPlanRequestDTO);
-    res.status(200).json({
-      plans: plans,
-    });
+    res.status(200).send(plans);
   } catch (error) {
     console.error(error);
     res.status(400).json({error});
