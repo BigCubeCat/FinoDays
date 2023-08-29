@@ -13,7 +13,7 @@ docker-compose up -d
 
 ## Usage
  
-- Go to http://localhost/ to find web-interface
+- Go to http://localhost:3000/ to find web-interface
 - Go to http://localhost:5000/doc/ to find API docs
 - Start tg-bot in telegram https://t.me/finodays_assist_bot to use telegram bot
 
