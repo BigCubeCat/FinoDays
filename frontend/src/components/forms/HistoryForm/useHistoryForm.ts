@@ -15,7 +15,6 @@ export default function useHistoryForm() {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser).user;
 
-
   const [otherProducts, setOtherProducts] = useState<boolean[]>([
     false,
     true,
@@ -28,7 +27,8 @@ export default function useHistoryForm() {
     income: user.income,
     setIncome: (income: number) => dispatch(setIncome(income)),
     consumption: user.consumption,
-    setConsumption: (consumption: number) => dispatch(setConsumption(consumption)),
+    setConsumption: (consumption: number) =>
+      dispatch(setConsumption(consumption)),
     employer: user.inn,
     setEmployer: (inn: string) => dispatch(setInn(inn)),
 

@@ -1,4 +1,11 @@
-import {Button, Card, Checkbox, FormControlLabel, TextField, Typography} from '@mui/material';
+import {
+  Button,
+  Card,
+  Checkbox,
+  FormControlLabel,
+  TextField,
+  Typography,
+} from '@mui/material';
 import Box from '@mui/material/Box';
 
 import useHistoryForm from '@/components/forms/HistoryForm/useHistoryForm.ts';
@@ -90,7 +97,11 @@ export default function HistoryForm(props: {next: () => void}) {
           ))}
         </Box>
       </Box>
-      <FormControlLabel required control={<Checkbox />} label="я принимаю условия передачи личной информации" />
+      <FormControlLabel
+        required
+        control={<Checkbox />}
+        label="я принимаю условия передачи личной информации"
+      />
       <Button
         onClick={() => props.next()}
         variant={'contained'}

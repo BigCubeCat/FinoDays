@@ -30,12 +30,7 @@ export const loanSlice = createSlice({
   },
 });
 
-export const {
-  setSum,
-  setDuration,
-  setPurpose,
-} =
-  loanSlice.actions;
+export const {setSum, setDuration, setPurpose} = loanSlice.actions;
 
 export const selectLoan = (state: RootState) => state.loan;
 export default loanSlice.reducer;

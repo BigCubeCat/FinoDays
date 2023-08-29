@@ -1,5 +1,10 @@
 import {useAppDispatch, useAppSelector} from '@/app/hooks.ts';
-import {selectLoan, setDuration, setPurpose, setSum} from '@/app/loan/loanSlice.ts';
+import {
+  selectLoan,
+  setDuration,
+  setPurpose,
+  setSum,
+} from '@/app/loan/loanSlice.ts';
 import {useState} from 'react';
 
 export default function useProductForm() {

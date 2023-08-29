@@ -3,7 +3,8 @@ import {TLoan, TUser} from '@/app/types.ts';
 
 async function postPlan(user: TUser, plan: TLoan) {
   return await axios.post('http://localhost:5000/plan/', {
-    user, plan,
+    user,
+    plan,
   });
 }
 

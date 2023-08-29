@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import MoneyInput from '@/components/forms/MoneyInput.tsx';
+import MoneyInput from '@/components/MoneyInput/MoneyInput.tsx';
 import useProductForm from '@/components/forms/ProductForm/useProductForm.ts';
 import {purposeVariants} from '@/components/forms/ProductForm/const.ts';
 
@@ -58,7 +58,7 @@ export default function ProductForm(props: {next: () => void}) {
           <Box>
             <Typography variant={'h6'}>Срок займа в годах</Typography>
             <TextField
-              type='number'
+              type="number"
               value={formData.duration}
               onChange={(e) => formData.setDuration(Number(e.target.value))}
               InputProps={{inputProps: {min: 1, max: 100}}}
@@ -71,13 +71,13 @@ export default function ProductForm(props: {next: () => void}) {
           minimum={1000}
           maximum={10000000}
           step={1000}
-          label='Сумма кредита'
+          label="Сумма кредита"
           enableButtons
         />
         <TextField
           fullWidth
           disabled
-          label='Ежемесячный платеж'
+          label="Ежемесячный платеж"
           type={'number'}
           value={formData.payment}
         />
