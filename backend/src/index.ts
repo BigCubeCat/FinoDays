@@ -5,7 +5,7 @@ import express from 'express';
 import morgan from 'morgan';
 
 import swaggerUi from 'swagger-ui-express';
-import swaggerFile from './assets/swagger-output.json';
+import swaggerFile from './assets/swagger.json';
 
 import { loadConfig, config } from './config';
 loadConfig();
