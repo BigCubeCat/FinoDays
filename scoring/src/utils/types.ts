@@ -1,12 +1,17 @@
-export type TProvision = 'none' | 'car' | 'house' | 'land';
-
-export type UserDto = {
+export type TUser = {
   name: string;
   experience: number;
   count: number;
-  income: number;
-  consumption: number;
+  percent: number;
   age: number;
   phone: string;
   provision: TProvision;
-}
+};
+
+export type TProvision =
+  | 'none'
+  | 'surely'
+  | 'transport'
+  | 'estate'
+  | 'business'
+  | 'property';

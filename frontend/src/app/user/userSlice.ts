@@ -17,7 +17,9 @@ export interface IUserState {
 const initialState: IUserState = {
   name: 'guest',
   experience: 0,
-  count: 0, income: 0, consumption: 0,
+  count: 0,
+  income: 0,
+  consumption: 0,
   phone: '',
   provision: 'none',
   age: 18,

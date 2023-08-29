@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     loan: loanReducer,
     res: resReducer,
-    user: userReducer
+    user: userReducer,
   },
 });
 

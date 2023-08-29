@@ -1,7 +1,5 @@
-export type TSum = {
-  from: number;
-  to: number;
-}
+export type TSum = number;
+
 export type TProductDto = {
   total_sum: TSum;
   percent: number;
