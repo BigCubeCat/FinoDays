@@ -8,9 +8,8 @@ export interface ILoanState {
 
 const initialState: ILoanState = {
   loan: {
-    amount: undefined,
-    percent: undefined,
-    payment: undefined,
+    sum: 0,
+    duration: 1,
     purpose: '',
   },
 };
@@ -19,26 +18,19 @@ export const loanSlice = createSlice({
   name: 'loan',
   initialState,
   reducers: {
-    setAmount: (state, action: PayloadAction<number>) => {
-      state.loan.amount = action.payload;
+    setSum: (state, action: PayloadAction<number>) => {
+      state.loan.sum = action.payload;
     },
-    setPercent: (state, action: PayloadAction<number>) => {
-      state.loan.percent = action.payload;
-    },
-    setPayment: (state, action: PayloadAction<number>) => {
-      state.loan.payment = action.payload;
+    setDuration: (state, action: PayloadAction<number>) => {
+      state.loan.duration = action.payload;
     },
     setPurpose: (state, action: PayloadAction<string>) => {
       state.loan.purpose = action.payload;
     },
-    clear: (state) => {
-      state.loan = initialState.loan;
-    },
   },
 });
 
-export const {setAmount, setPurpose, setPercent, setPayment, clear} =
-  loanSlice.actions;
+export const {setSum, setDuration, setPurpose} = loanSlice.actions;
 
 export const selectLoan = (state: RootState) => state.loan;
 export default loanSlice.reducer;

@@ -1,48 +1,80 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from '@/app/store';
-import {TProvisionVariant} from '@/app/types.ts';
+import {TUser} from '@/app/types.ts';
 
 export interface IUserState {
-  name: string;
-  experience: number;
-  count: number;
-  income: number;
-  consumption: number;
-  age: number;
-  phone: string;
-  provision: TProvisionVariant;
+  user: TUser;
 }
 
 // TODO add fetch
 const initialState: IUserState = {
-  name: 'guest',
-  experience: 0,
-  count: 0,
-  income: 0,
-  consumption: 0,
-  phone: '',
-  provision: 'none',
-  age: 18,
+  user: {
+    name: 'guest',
+    age: 40,
+    experience: 5,
+    count: 1,
+    income: 1000000,
+    consumption: 10000,
+    phone: '+7',
+    region: '22',
+    provision: 'none',
+    inn: '0000000000',
+  },
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<IUserState>) => {
-      state.consumption = action.payload.consumption;
-      state.income = action.payload.income;
-      state.count = action.payload.count;
-      state.experience = action.payload.experience;
-      state.name = action.payload.name;
-      state.age = action.payload.age;
-      state.provision = action.payload.provision;
-      state.phone = action.payload.phone;
+    setUser: (state, action: PayloadAction<TUser>) => {
+      state.user = action.payload;
+    },
+    setName: (state, action: PayloadAction<string>) => {
+      state.user.name = action.payload;
+    },
+    setAge: (state, action: PayloadAction<number>) => {
+      state.user.age = action.payload;
+    },
+    setExp: (state, action: PayloadAction<number>) => {
+      state.user.experience = action.payload;
+    },
+    setCount: (state, action: PayloadAction<number>) => {
+      state.user.count = action.payload;
+    },
+    setIncome: (state, action: PayloadAction<number>) => {
+      state.user.income = action.payload;
+    },
+    setConsumption: (state, action: PayloadAction<number>) => {
+      state.user.consumption = action.payload;
+    },
+    setPhone: (state, action: PayloadAction<string>) => {
+      state.user.phone = action.payload;
+    },
+    setInn: (state, action: PayloadAction<string>) => {
+      state.user.inn = action.payload;
+    },
+    setRegion: (state, action: PayloadAction<string>) => {
+      state.user.region = action.payload;
+    },
+    setProvision: (state, action: PayloadAction<string>) => {
+      state.user.provision = action.payload;
     },
   },
 });
 
-export const {setUser} = userSlice.actions;
+export const {
+  setUser,
+  setProvision,
+  setInn,
+  setRegion,
+  setExp,
+  setPhone,
+  setConsumption,
+  setName,
+  setIncome,
+  setAge,
+  setCount,
+} = userSlice.actions;
 
 export const selectUser = (state: RootState) => state.user;
 export default userSlice.reducer;

@@ -16,23 +16,23 @@ export const purposeVariants = [
     label: 'Ремонт',
   },
   {
-    id: "b",
-    label: 'Развитие бизнеса'
+    id: 'b',
+    label: 'Развитие бизнеса',
   },
   {
-    id: "ref",
-    label: 'Рефинансирование'
+    id: 'ref',
+    label: 'Рефинансирование',
   },
   {
-    ref: "vacation",
-    label: 'Отпуск'
+    ref: 'vacation',
+    label: 'Отпуск',
   },
   {
-    id: "heal",
-    label: 'Лечение'
+    id: 'heal',
+    label: 'Лечение',
   },
   {
-    id: "other",
-    label: 'Иное'
+    id: 'other',
+    label: 'Иное',
   },
 ];
