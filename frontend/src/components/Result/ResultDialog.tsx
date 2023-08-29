@@ -1,7 +1,11 @@
 import {Box, Dialog, DialogTitle, Typography} from '@mui/material';
 import Header from '../AppBar/Header';
+import {useAppSelector} from '@/app/hooks.ts';
+import {selectResults} from '@/app/response/responseSlice.ts';
 
 export default function ResultDialog(props: {open: boolean, close: () => void}) {
+  const results = useAppSelector(selectResults);
+
   return (
     <Dialog onClose={() => props.close()} open={props.open} fullScreen>
       <Header />
@@ -11,7 +15,7 @@ export default function ResultDialog(props: {open: boolean, close: () => void}) 
         </Typography>
       </DialogTitle>
       <Box sx={{}}>
-
+        {results.map(result => <Box>{result.title}</Box>)}
       </Box>
     </Dialog>
   );
