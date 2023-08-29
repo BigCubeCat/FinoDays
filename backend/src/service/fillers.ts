@@ -1,5 +1,5 @@
-import {TPlanRequestDTO} from '../dtos/requestDTO';
-import { TUserDto } from '../dtos_v2/userDTO';
+import { TPlanRequestDTO } from '../dtos/requestDTO';
+import { TUser } from '../dtos_v2/userDTO';
 
 /**
  * Generates a new plan DTO by filling in default values for missing properties.
@@ -16,14 +16,13 @@ export const fillPlan = (dto: TPlanRequestDTO): TPlanRequestDTO => {
 /**
  * Generates a new user DTO by filling in default values for missing properties.
  *
- * @param {TUserDto} dto - The original DTO.
- * @returns {TUserDto} - New DTO
+ * @param {TUser} dto - The original DTO.
+ * @returns {TUser} - New DTO
  */
-export const fillUser = (dto: TUserDto): TUserDto => {
+export const fillUser = (dto: TUser): TUser => {
   const user = structuredClone(dto);
-  if (!user.finance.income || !user.finance.consumption) {
-    user.finance.consumption = user.finance.percent || 100;
-    user.finance.income = 100;
-  }
+  user.finance.consumption ||= 0;
+  user.provision ||= 'none';
+  user.target ||= 'another';
   return user;
 };

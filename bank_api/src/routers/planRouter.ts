@@ -14,9 +14,11 @@ type TMatchBody = {
   score: number;
   plan: TPlanRequestDTO;
 };
+
 router.post('/match', function (req, res, _next) {
   const body: TMatchBody = req.body;
   console.log(body)
+  
   const result: TPlanDTO[] = plans.filter((plan) =>
     plan.condition.user_score <= body.score &&
     (body.plan.duration - plan.duration) < 2 &&
