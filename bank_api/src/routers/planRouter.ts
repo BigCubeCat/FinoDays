@@ -27,9 +27,6 @@ router.post('/match', function (req, res, _next) {
   });
 });
 
-
-
-
 type ApproveRequest = {
   score: number;
 }
