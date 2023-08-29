@@ -1,4 +1,4 @@
-import {TUserDto} from '../dtos/userDTO';
+import {TUserDto} from '../dtos_v2/userDTO';
 import {config} from '../config';
 import {fetchPost} from './utils';
 
@@ -10,7 +10,6 @@ import {fetchPost} from './utils';
  */
 export const getUserScore = async (user: TUserDto): Promise<number> => {
   try {
-    console.log("here")
     const response = await fetchPost(config.scoring_address, user);
     console.log("resp = ", response);
     return response?.score | Infinity;

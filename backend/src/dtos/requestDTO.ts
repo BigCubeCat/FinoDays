@@ -1,5 +1,5 @@
+import { TUserDto } from '../dtos_v2/userDTO';
 import {TSum} from './productDTO';
-import {TUserDto} from './userDTO';
 
 export type TApiRequestDTO = {
   user: TUserDto;

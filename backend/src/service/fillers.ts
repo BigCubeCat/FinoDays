@@ -1,5 +1,5 @@
 import {TPlanRequestDTO} from '../dtos/requestDTO';
-import {TUserDto} from '../dtos/userDTO';
+import { TUserDto } from '../dtos_v2/userDTO';
 
 /**
  * Generates a new plan DTO by filling in default values for missing properties.
@@ -24,9 +24,6 @@ export const fillUser = (dto: TUserDto): TUserDto => {
   if (!user.finance.income || !user.finance.consumption) {
     user.finance.consumption = user.finance.percent || 100;
     user.finance.income = 100;
-  }
-  if (user.provision) {
-    user.provision = 'none';
   }
   return user;
 };
