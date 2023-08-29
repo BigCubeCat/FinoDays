@@ -5,40 +5,57 @@ import (
 )
 
 type LoanTarger string
+
 const (
-	None       LoanTarger = "Другое"
-	Car        LoanTarger = "Покупка автомобиля"
-	RealEstate LoanTarger = "Покупка недвижимости"
-	Business   LoanTarger = "Развитие бизнеса"
-	Renovation LoanTarger = "Ремонт"
-	Education  LoanTarger = "Оплата образования"
-	Refinance  LoanTarger = "Рефинансирование"
-	Traveling  LoanTarger = "Путешествие"
-	Treatment  LoanTarger = "Лечение"
+	None       LoanTarger = "another"
+	Car        LoanTarger = "car"
+	RealEstate LoanTarger = "estate"
+	Business   LoanTarger = "business"
+	Renovation LoanTarger = "renovation"
+	Education  LoanTarger = "education"
+	Refinance  LoanTarger = "refinance"
+	Traveling  LoanTarger = "traveling"
+	Treatment  LoanTarger = "treatment"
 )
 
 type PBSProduct string
+
 const (
-	SalaryCard PBSProduct = "Зарплатная карта ПСБ"
-	CreditCard PBSProduct = "Кредитная карта ПСБ"
-	Deposite   PBSProduct = "Вклад ПСБ"
+	SalaryCard PBSProduct = "salary card"
+	CreditCard PBSProduct = "credit card"
+	Deposite   PBSProduct = "deposite"
 )
 
 type FamilyStatus string
+
 const (
-	Married FamilyStatus = "В браке"
-	Unmarried FamilyStatus = "Не в браке"
+	Married   FamilyStatus = "married"
+	Unmarried FamilyStatus = "single"
 )
+
+type Provision string
+
+// 'none' | 'flat' | 'house' | 'land' | 'car';
+const (
+	NoneP  Provision = "none"
+	FlatP  Provision = "flat"
+	HouseP Provision = "house"
+	LandP  Provision = "land"
+	CarP   Provision = "car"
+)
+
 type User struct {
 	ID           int64 `gorm:"primary_key"`
 	Name         string
+	Age          int
 	Phone        string
 	INN          string
 	Region       string
 	Salary       int
 	LoanTerm     int
-	CreditCount  int
 	LoanAmount   int
+	Experience   int
+	Provision    Provision
 	FamilyStatus FamilyStatus
 	Target       LoanTarger
 	PBSProduct   PBSProduct

@@ -30,6 +30,16 @@ func (user *User) SetUserName(name string) {
 	Database.Save(&user)
 }
 
+func (user *User) SetUserAge(age int) {
+	user.Age = age
+	Database.Save(&user)
+}
+
+func (user *User) SetUserExperience(experience int) {
+	user.Experience = experience
+	Database.Save(&user)
+}
+
 func (user *User) SetUserPhone(phone string) {
 	user.Phone = phone
 	Database.Save(&user)
@@ -60,11 +70,6 @@ func (user *User) SetUserTarget(target LoanTarger) {
 	Database.Save(&user)
 }
 
-func (user *User) SetUserCreditCount(creditCount int) {
-	user.CreditCount = creditCount
-	Database.Save(&user)
-}
-
 func (user *User) SetUserRegion(region string) {
 	user.Region = region
 	Database.Save(&user)
@@ -76,6 +81,11 @@ func (user *User) SetPBSProduct(product PBSProduct) {
 }
 func (user *User) SetUsetINN(inn string) {
 	user.INN = inn
+	Database.Save(&user)
+}
+
+func (user *User) SetLoanProvision(provision Provision) {
+	user.Provision = provision
 	Database.Save(&user)
 }
 

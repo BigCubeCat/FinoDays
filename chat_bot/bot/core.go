@@ -57,6 +57,8 @@ func handleState(user *database.User, update *tgbotapi.Update, msg tgbotapi.Mess
 		stateCreditHandler(update, user, msg)
 	case state.ChatStateUserName:
 		stateCreditUserNameHandler(user, msg)
+	case state.ChatStateUserAge:
+		stateUserAgeHandler(user, msg)
 	case state.ChatStateUserPhone:
 		stateCreditUserPhoneHandler(user, msg)
 	case state.ChatStateUserRegion:
@@ -65,14 +67,16 @@ func handleState(user *database.User, update *tgbotapi.Update, msg tgbotapi.Mess
 		stateUserFamilyStatusHandler(user, msg)
 	case state.ChatStateLoanAmount:
 		stateLoanAmountHandler(user, msg)
+	case state.ChatStateLoanProvision:
+		stateLoanProvisionHandler(user, msg)
 	case state.ChatStateLoanTerm:
 		stateLoanTermHandler(user, msg)
 	case state.ChatStateLoanTarget:
 		stateLoanTargetHandler(update, user, msg)
 	case state.ChatStateUserSalary:
 		stateUserSalaryHandler(user, msg)
-	case state.ChatStateUserCreditCount:
-		stateUserCreditCountHandler(user, msg)
+	case state.ChatStateUserExperience:
+		stateUserExperienceHandler(user, msg)
 	case state.ChatStateUserINN:
 		stateUserINNHandler(user, msg)
 	case state.ChatStateUserPSBRole:
