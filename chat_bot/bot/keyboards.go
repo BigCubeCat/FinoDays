@@ -71,3 +71,17 @@ var familyStatusKeyboard = tgbotapi.NewReplyKeyboard(
 		tgbotapi.NewKeyboardButton("Не в браке"),
 	),
 )
+
+var provisionKeyboard = tgbotapi.NewReplyKeyboard(
+	tgbotapi.NewKeyboardButtonRow(
+		tgbotapi.NewKeyboardButton("Квартира"),
+		tgbotapi.NewKeyboardButton("Дом"),
+	),
+	tgbotapi.NewKeyboardButtonRow(
+		tgbotapi.NewKeyboardButton("Земельный участок"),
+		tgbotapi.NewKeyboardButton("Автомобиль"),
+	),
+	tgbotapi.NewKeyboardButtonRow(
+		tgbotapi.NewKeyboardButton("Ничего"),
+	),
+)

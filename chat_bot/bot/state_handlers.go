@@ -1,6 +1,7 @@
 package bot
 
 import (
+	"psb_bot/api"
 	"psb_bot/bot/state"
 	"psb_bot/database"
 	"psb_bot/utils"
@@ -64,17 +65,30 @@ func stateCreditUserNameHandler(user *database.User, msg tgbotapi.MessageConfig)
 
 func stateCreditUserPhoneHandler(user *database.User, msg tgbotapi.MessageConfig) {
 	if !utils.ValidatePhone(msg.Text) {
-		msg.Text = "Введите корректный номер телефона в формате +7XXXXXXXXXX"
-		BotCore.Bot.Send(msg)
-		return
+		msg.Text = "Пожалуйста, введите корректный номер телефона в формате +7XXXXXXXXXX"
+	} else {
+		user.SetUserPhone(msg.Text)
+		user.UpdateChatState(state.ChatStateUserAge)
+		msg.Text = BotCore.GetPhrase("creditUserAge")
+		msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
 	}
-	user.SetUserPhone(msg.Text)
-	user.UpdateChatState(state.ChatStateUserRegion)
-	msg.Text = BotCore.GetPhrase("creditUserRegion")
-	msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
 	BotCore.Bot.Send(msg)
 }
 
+func stateUserAgeHandler(user *database.User, msg tgbotapi.MessageConfig) {
+	intValue, err := strconv.Atoi(msg.Text)
+	if err != nil {
+		msg.Text = "Пожалуйста, введите целое число лет"
+	} else {
+		user.SetUserAge(intValue)
+		user.UpdateChatState(state.ChatStateUserRegion)
+		msg.Text = BotCore.GetPhrase("creditUserRegion")
+		msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
+	}
+	user.SetUserAge(intValue)
+	user.UpdateChatState(state.ChatStateUserRegion)
+	BotCore.Bot.Send(msg)
+}
 
 func stateUserRegionHandler(user *database.User, msg tgbotapi.MessageConfig) {
 	user.SetUserRegion(msg.Text)
@@ -98,13 +112,12 @@ func stateLoanAmountHandler(user *database.User, msg tgbotapi.MessageConfig) {
 	intValue, err := strconv.Atoi(msg.Text)
 	if err != nil {
 		msg.Text = "Введите целое число"
-		BotCore.Bot.Send(msg)
-		return
+	} else {
+		user.SetUserLoanAmount(intValue)
+		user.UpdateChatState(state.ChatStateLoanTerm)
+		msg.Text = BotCore.GetPhrase("creditLoanTerm")
+		msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
 	}
-	user.SetUserLoanAmount(intValue)
-	user.UpdateChatState(state.ChatStateLoanTerm)
-	msg.Text = BotCore.GetPhrase("creditLoanTerm")
-	msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
 	BotCore.Bot.Send(msg)
 }
 
@@ -112,32 +125,31 @@ func stateLoanTermHandler(user *database.User, msg tgbotapi.MessageConfig) {
 	intValue, err := strconv.Atoi(msg.Text)
 	if err != nil {
 		msg.Text = "Введите целое число"
-		BotCore.Bot.Send(msg)
-		return
+	} else {
+		user.SetUserLoanTerm(intValue)
+		user.UpdateChatState(state.ChatStateLoanTarget)
+		msg.Text = BotCore.GetPhrase("creditLoanTarget")
+		msg.ReplyMarkup = creditTargetKeyboard
 	}
-	user.SetUserLoanTerm(intValue)
-	user.UpdateChatState(state.ChatStateLoanTarget)
-	msg.Text = BotCore.GetPhrase("creditLoanTarget")
-	msg.ReplyMarkup = creditTargetKeyboard
 	BotCore.Bot.Send(msg)
 }
 
 func stateLoanTargetHandler(update *tgbotapi.Update, user *database.User, msg tgbotapi.MessageConfig) {
+	user.SetUserTarget(utils.StringToTarget(update.Message.Text))
+
 	msg.Text = BotCore.GetPhrase("creditLoanTarget")
 	msg.ReplyMarkup = creditTargetKeyboard
 
-	switch update.Message.Text {
-	case "Недвижимость":
-		user.SetUserTarget(database.RealEstate)
-	case "Бизнес":
-		user.SetUserTarget(database.Business)
-	case "Автомобиль":
-		user.SetUserTarget(database.Car)
-	default:
-		user.SetUserTarget(database.None)
-	}
+	user.UpdateChatState(state.ChatStateLoanProvision)
 
-	user.SetUserTarget(utils.StringToTarget(update.Message.Text))
+	msg.ReplyMarkup = provisionKeyboard
+	msg.Text = BotCore.GetPhrase("creditLoanProvision")
+	BotCore.Bot.Send(msg)
+}
+
+func stateLoanProvisionHandler(user *database.User, msg tgbotapi.MessageConfig) {
+	user.SetLoanProvision(utils.StringToProvision(msg.Text))
+
 	user.UpdateChatState(state.ChatStateUserSalary)
 
 	msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
@@ -148,29 +160,26 @@ func stateLoanTargetHandler(update *tgbotapi.Update, user *database.User, msg tg
 func stateUserSalaryHandler(user *database.User, msg tgbotapi.MessageConfig) {
 	intValue, err := strconv.Atoi(msg.Text)
 	if err != nil {
-		msg.Text = "Введите целое число"
+		msg.Text = "Число должно быть целым"
 	} else {
 		user.SetUserSalary(intValue)
-		user.UpdateChatState(state.ChatStateUserCreditCount)
-		msg.Text = BotCore.GetPhrase("creditUserCreditCount")
+		user.UpdateChatState(state.ChatStateUserExperience)
+		msg.Text = BotCore.GetPhrase("creditUserExperience")
 		msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
 	}
 	BotCore.Bot.Send(msg)
 }
 
-func stateUserCreditCountHandler(user *database.User, msg tgbotapi.MessageConfig) {
+func stateUserExperienceHandler(user *database.User, msg tgbotapi.MessageConfig) {
 	intValue, err := strconv.Atoi(msg.Text)
 	if err != nil {
-		msg.Text = "Введите целое число"
-		BotCore.Bot.Send(msg)
-		return
+		msg.Text = "Введите целое число лет"
+	} else {
+		user.SetUserExperience(intValue)
+		user.UpdateChatState(state.ChatStateUserINN)
+		msg.Text = BotCore.GetPhrase("creditUserINN")
+		msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
 	}
-
-	user.SetUserCreditCount(intValue)
-
-	user.UpdateChatState(state.ChatStateUserINN)
-	msg.Text = BotCore.GetPhrase("creditUserINN")
-	msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
 	BotCore.Bot.Send(msg)
 }
 
@@ -181,6 +190,21 @@ func stateUserINNHandler(user *database.User, msg tgbotapi.MessageConfig) {
 	msg.Text = BotCore.GetPhrase("creditUserPSBRole")
 	msg.ReplyMarkup = bankProductKeyboard
 	BotCore.Bot.Send(msg)
+}
+
+func stateUserPSBRoleHandler(user *database.User, msg tgbotapi.MessageConfig) {
+	user.SetPBSProduct(utils.StringToPBSProduct(msg.Text))
+
+	user.UpdateChatState(state.ChatStateResult)
+	msg.Text = BotCore.GetPhrase("creditResult")
+	msg.ReplyMarkup = finalKeyboard
+	BotCore.Bot.Send(msg)
+	list := api.GetUserPlans(user)
+	for _, plan := range list {
+		msg.ParseMode = tgbotapi.ModeHTML
+		msg.Text = utils.PlanToText(plan)
+		BotCore.Bot.Send(msg)
+	}
 }
 
 func stateResultHandler(update *tgbotapi.Update, user *database.User, msg tgbotapi.MessageConfig) {
@@ -194,14 +218,5 @@ func stateResultHandler(update *tgbotapi.Update, user *database.User, msg tgbota
 	msg.ReplyMarkup = finalKeyboard
 	msg.Text = BotCore.GetPhrase("unknown")
 SEND:
-	BotCore.Bot.Send(msg)
-}
-
-func stateUserPSBRoleHandler(user *database.User, msg tgbotapi.MessageConfig) {
-	user.SetPBSProduct(utils.StringToPBSProduct(msg.Text))
-
-	user.UpdateChatState(state.ChatStateResult)
-	msg.Text = BotCore.GetPhrase("creditResult")
-	msg.ReplyMarkup = finalKeyboard
 	BotCore.Bot.Send(msg)
 }
