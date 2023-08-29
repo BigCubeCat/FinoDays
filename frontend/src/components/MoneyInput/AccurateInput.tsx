@@ -1,6 +1,5 @@
 import {IconButton, InputAdornment, TextField} from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
-import ClearIcon from '@mui/icons-material/Clear';
 
 interface IProps {
   label: string;
@@ -10,10 +9,6 @@ interface IProps {
 }
 
 export default function AccurateInput(props: IProps) {
-  const changeValue = () => {
-    props.setValue(props.value);
-    props.modeChange();
-  };
   return (
     <TextField
       fullWidth
@@ -21,16 +16,9 @@ export default function AccurateInput(props: IProps) {
       label={props.label}
       onChange={(e) => props.setValue(Number(e.target.value))}
       InputProps={{
-        startAdornment: (
-          <InputAdornment position="start">
-            <IconButton onClick={() => props.modeChange()}>
-              <ClearIcon />
-            </IconButton>
-          </InputAdornment>
-        ),
         endAdornment: (
           <InputAdornment position="start">
-            <IconButton onClick={() => changeValue()}>
+            <IconButton onClick={() => props.modeChange()}>
               <DoneIcon />
             </IconButton>
           </InputAdornment>
