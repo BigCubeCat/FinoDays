@@ -12,7 +12,7 @@ export const customValue = (value: number) => {
       sign = '.';
     }
     result = '' + (value % 10) + sign + result;
-    value = Math.round(value / 10);
+    value = Math.floor(value / 10);
     count += 1;
   }
   return result;

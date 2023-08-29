@@ -198,7 +198,13 @@ func stateUserPSBRoleHandler(user *database.User, msg tgbotapi.MessageConfig) {
 	user.UpdateChatState(state.ChatStateResult)
 	msg.Text = BotCore.GetPhrase("creditResult")
 	list := api.GetUserPlans(user)
+	count := 0
 	for _, plan := range list {
+		count++
+		if count == 4 {
+			break
+		}
+		msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
 		user.AddPlanId(plan.Id)
 		msg.ParseMode = tgbotapi.ModeHTML
 		msg.Text = utils.PlanToText(plan)
@@ -218,20 +224,7 @@ func stateResultHandler(update *tgbotapi.Update, user *database.User, msg tgbota
 		msg.ReplyMarkup = mainKeyboard
 		user.ClearPlans()
 		goto SEND
-	default:
-		intValue, err := strconv.Atoi(update.Message.Text)
-		if err != nil {
-			goto ERROR
-		}
-		if database.Contains(user.Plans, int64(intValue)) {
-			msg.Text = "ССЫЛКА НА САЙТ"
-			msg.ReplyMarkup = finalKeyboard
-			goto SEND
-		}
-		msg.Text = "План с таким номером не найден"
-		goto SEND
 	}
-ERROR:
 	msg.ReplyMarkup = finalKeyboard
 	msg.Text = BotCore.GetPhrase("unknown")
 SEND:
