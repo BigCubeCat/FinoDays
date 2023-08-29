@@ -52,10 +52,10 @@ const provisionScore = (prov: TProvision) => {
 export default function calculateSum(user: TUser): number {
   const ageSc = ageScore(user.age)
   if (ageSc === 0) return 0;
-  const loanSc = loanScore(user.finance.consumption / user.finance.income);
+  const loanSc = loanScore(user.consumption / user.income);
   if (loanSc === 0) return 0;
   return ageSc + loanSc +
-    countLoansScore(user.finance.count) +
-    experienceScore(user.finance.experience) +
+    countLoansScore(user.count) +
+    experienceScore(user.experience) +
     provisionScore(user.provision);
 }

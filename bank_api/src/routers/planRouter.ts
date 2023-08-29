@@ -10,24 +10,26 @@ router.get('/all', function (_req, res, _next) {
   });
 });
 
+
+
 type TMatchBody = {
   score: number;
   plan: TPlanRequestDTO;
 };
-
 router.post('/match', function (req, res, _next) {
   const body: TMatchBody = req.body;
-  console.log(body)
-  
   const result: TPlanDTO[] = plans.filter((plan) =>
     plan.condition.user_score <= body.score &&
     (body.plan.duration - plan.duration) < 2 &&
     body.plan.sum >= plan.sum.from && body.plan.sum <= plan.sum.to,
   );
+  console.log(body.plan.sum);
   res.send({
     plans: result,
   });
 });
+
+
 
 type ApproveRequest = {
   score: number;
