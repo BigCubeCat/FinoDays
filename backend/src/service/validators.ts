@@ -11,9 +11,8 @@ const validateUser = (user: TUser) => {
   if (!user.age) return 'Age is empty';
   if (!user.name) return "User's name is empty";
   if (!user.phone) return "User's phone is empty";
-  if (!user.finance) return "User's finance is empty";
-  if (!user.finance.experience) return "User's experience is empty";
-  if (!user.finance.income) return "User's income is empty";
+  if (!user.experience) return "User's experience is empty";
+  if (!user.income) return "User's income is empty";
   if (!user.inn) return "User's inn is empty";
   if (!user.region) return "User's region is empty";
   return '';

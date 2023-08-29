@@ -21,7 +21,7 @@ export const fillPlan = (dto: TPlanRequestDTO): TPlanRequestDTO => {
  */
 export const fillUser = (dto: TUser): TUser => {
   const user = structuredClone(dto);
-  user.finance.consumption ||= 0;
+  user.consumption ||= 0;
   user.provision ||= 'none';
   user.target ||= 'another';
   return user;

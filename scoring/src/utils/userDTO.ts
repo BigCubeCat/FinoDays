@@ -1,11 +1,9 @@
 export type TUser = {
   name: string;
-  finance: {
-    count: number;
-    income: number;
-    consumption: number;
-    experience: number;
-  };
+  count: number;
+  income: number;
+  consumption: number;
+  experience: number;
   age: number;
   phone: string;
   familyStatus: TFamilyStatus;
