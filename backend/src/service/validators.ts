@@ -1,5 +1,5 @@
 import {TApiRequestDTO, TPlanRequestDTO} from '../dtos/requestDTO';
-import {TUserDto} from '../dtos/userDTO';
+import {TUserDto} from '../dtos_v2/userDTO';
 
 type TValidateResult = {
   user: undefined | TUserDto;
@@ -17,11 +17,11 @@ const validateUser = (user: TUserDto) => {
   if (!user.phone) {
     return 'User\'s phone is empty';
   }
-  if (!user.experience) {
-    return 'User\'s experience is empty';
-  }
   if (!user.finance) {
     return 'User\'s finance is empty';
+  }
+  if (!user.finance.experience) {
+    return 'User\'s experience is empty';
   }
   return '';
 };

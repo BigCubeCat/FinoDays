@@ -1,4 +1,4 @@
-import {TProvision, TUser} from './types';
+import {TUser } from './types';
 
 /**
  * Calculates the age score based on the given age.
@@ -7,14 +7,16 @@ import {TProvision, TUser} from './types';
  * @return {number} The age score.
  */
 const ageScore = (age: number) => {
-  if (age < 23) {
+  if (age < 21) {
+    return 0;
+  } else if (age < 23) {
     return 9;
   } else if (age < 45) {
     return 15;
   } else if (age < 64) {
     return 34;
   }
-  return 10;
+  return 0;
 };
 
 const expScore = (exp: number) => {
@@ -52,22 +54,22 @@ const countLoansScore = (count: number) => {
   return 3;
 };
 
-const provisionScore = (prov: TProvision) => {
-  switch (prov) {
-    case 'none':
-      return 15;
-    case 'surely':
-      return 28;
-    case 'transport':
-      return 46;
-    case 'estate':
-      return 68;
-    case 'business':
-      return 50;
-    case 'property':
-      return 35;
-  }
-};
+// const provisionScore = (prov: TProvision) => {
+//   switch (prov) {
+//     case 'none':
+//       return 15;
+//     case 'surely':
+//       return 28;
+//     case 'transport':
+//       return 46;
+//     case 'estate':
+//       return 68;
+//     case 'business':
+//       return 50;
+//     case 'property':
+//       return 35;
+//   }
+// };
 
 /**
  * Calculates the sum of scores based on the user's information.
@@ -76,10 +78,10 @@ const provisionScore = (prov: TProvision) => {
  * @return {number} The sum of the scores.
  */
 export default function calculateSum(user: TUser): number {
+  // FIXME: FIX SCORING!
   // console.log(result);
   return ageScore(user.age) +
-    countLoansScore(user.count) +
-    expScore(user.experience) +
-    loanScore(user.percent / 100) +
-    provisionScore(user.provision);
-}
+    countLoansScore(user.finance.count) +
+    expScore(user.finance.experience) +
+    loanScore(user.finance.percent / 100);
+  }
