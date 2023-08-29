@@ -17,3 +17,8 @@ frontend/.idea
 # Backend
 
 backend/node_modules
+
+
+# Chat Bot
+
+chat_bot/chat.db

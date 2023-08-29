@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"fmt"
+	"psb_bot/api"
 	"psb_bot/database"
 	"regexp"
 )
@@ -72,4 +74,37 @@ func GetUserByID(id int64) *database.User {
 		user = database.CreateUser(id)
 	}
 	return &user
+}
+
+func StringToProvision(str string) database.Provision {
+	switch str {
+	case "Квартира":
+		return database.FlatP
+	case "Дом":
+		return database.HouseP
+	case "Земельный участок":
+		return database.LandP
+	case "Автомобиль":
+		return database.CarP
+	default:
+		return database.NoneP
+	}
+}
+
+func PlanToText(plan api.Plan) string {
+	str := ""
+	str += BoldText(plan.Title) + "\n" + "\n"
+	str += ItalicText(fmt.Sprintf("Сумма от %d до %d руб.", plan.Sum.From, plan.Sum.To)) + "\n"
+	str += ItalicText(fmt.Sprintf("Срок до %d лет", plan.Duration)) + "\n"
+	str += ItalicText(fmt.Sprintf("Ставка от %.2f%%", plan.Rate)) + "\n"
+	str += "\n"
+	return str
+}
+
+func BoldText(text string) string {
+	return fmt.Sprintf("<b>%s</b>", text)
+}
+
+func ItalicText(text string) string {
+	return fmt.Sprintf("<i>%s</i>", text)
 }

@@ -1,0 +1,23 @@
+.Header {
+    background: linear-gradient(90deg, #4A486E, #7171D6, #8B5186);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.Logo {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    margin-left: 15px;
+    font-family: 'Share Tech Mono', sans-serif;
+    cursor: default;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                     supported by Chrome, Edge, Opera and Firefox */
+}

@@ -18,7 +18,12 @@ services:
       - PORT=${API_PORT}
     stdin_open: true
     tty: true
-
+  bot:
+    build: ./chat_bot
+    restart: always
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - API_ADDRESS=http://bank_api:${API_PORT}
   backend:
     build: ./backend
     restart: always
@@ -32,6 +37,6 @@ services:
     tty: true
 
 #  frontend:
-#    build: ./frontend
-#    ports:
-#      - 3000:3000
+ #   build: ./frontend
+  #  ports:
+   #   - 3000:3000

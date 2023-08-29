@@ -1,6 +1,8 @@
 package database
 
-import "psb_bot/bot/state"
+import (
+	"psb_bot/bot/state"
+)
 
 func GetUser(id int64) (User, bool) {
 	var user User
@@ -27,6 +29,16 @@ func (user *User) UpdateChatState(chatState state.ChatState) {
 
 func (user *User) SetUserName(name string) {
 	user.Name = name
+	Database.Save(&user)
+}
+
+func (user *User) SetUserAge(age int) {
+	user.Age = age
+	Database.Save(&user)
+}
+
+func (user *User) SetUserExperience(experience int) {
+	user.Experience = experience
 	Database.Save(&user)
 }
 
@@ -60,11 +72,6 @@ func (user *User) SetUserTarget(target LoanTarger) {
 	Database.Save(&user)
 }
 
-func (user *User) SetUserCreditCount(creditCount int) {
-	user.CreditCount = creditCount
-	Database.Save(&user)
-}
-
 func (user *User) SetUserRegion(region string) {
 	user.Region = region
 	Database.Save(&user)
@@ -79,7 +86,42 @@ func (user *User) SetUsetINN(inn string) {
 	Database.Save(&user)
 }
 
+func (user *User) SetLoanProvision(provision Provision) {
+	user.Provision = provision
+	Database.Save(&user)
+}
+
 func (user *User) SetUserFamilyStatus(familyStatus FamilyStatus) {
 	user.FamilyStatus = familyStatus
 	Database.Save(&user)
+}
+
+func (user *User) AddPlanId(id int64) {
+	if contains(user.Plans, id) {
+		return
+	}
+	user.Plans = append(user.Plans, id)
+	Database.Save(&user)
+}
+
+func (user *User) ClearPlans() {
+	user.Plans = []int64{}
+	Database.Save(&user)
+}
+
+// contains checks if an element exists in a slice of int64.
+//
+// Parameters:
+// - s: the slice to search in.
+// - e: the element to search for.
+//
+// Returns:
+// - bool: true if the element is found, false otherwise.
+func contains(s []int64, e int64) bool {
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
 }
