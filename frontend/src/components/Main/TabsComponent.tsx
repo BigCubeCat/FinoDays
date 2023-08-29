@@ -32,27 +32,23 @@ export default function MyTabs() {
     },
   ];
 
-  const CurrentTab = tabs.filter(tab => tab.id === value)[0].content;
+  const CurrentTab = tabs.filter((tab) => tab.id === value)[0].content;
 
   return (
     <Box
       component={Paper}
       elevation={0}
       sx={{
-        display: 'flex', justifyContent: 'center',
-      }}>
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
       {isOpen && <ResultDialog open={isOpen} close={() => setIsOpen(false)} />}
       <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant={'fullWidth'}
-        >
-          {tabs.map(tab => <Tab
-            sx={{maxWidth: 300}}
-            label={tab.label}
-            id={`tab-${tab.id}`}
-          />)}
+        <Tabs value={value} onChange={handleChange} variant={'fullWidth'}>
+          {tabs.map((tab) => (
+            <Tab sx={{maxWidth: 300}} label={tab.label} id={`tab-${tab.id}`} />
+          ))}
         </Tabs>
         {CurrentTab}
       </Box>

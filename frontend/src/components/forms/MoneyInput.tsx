@@ -61,7 +61,9 @@ export default function MoneyInput({
         m: 1,
       }}
     >
-      <Typography variant={'body2'} sx={{fontWeight: 500}}>{label}</Typography>
+      <Typography variant={'body2'} sx={{fontWeight: 500}}>
+        {label}
+      </Typography>
 
       <FormControl margin={'none'}>
         <FilledInput

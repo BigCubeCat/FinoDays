@@ -22,12 +22,12 @@ export type TResult = {
   id: number;
   title: string;
   type: string;
-  sum: {from: number, to: number};
+  sum: {from: number; to: number};
   duration: number;
   rate: number;
   condition: {
     provision: string;
     user_score: number;
-  }
+  };
 };
 export type TProvisionVariant = 'car' | 'house' | 'land' | 'none';

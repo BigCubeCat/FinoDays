@@ -1,10 +1,5 @@
 import {useState} from 'react';
-import {
-  Box,
-  Button,
-  Card,
-  Typography,
-} from '@mui/material';
+import {Box, Button, Card, Typography} from '@mui/material';
 
 import {TResult} from '@/app/types.ts';
 import ParamComponent from '@/components/Result/ParamComponent.tsx';
@@ -21,7 +16,7 @@ export default function ResultCard({result}: {result: TResult}) {
     };
     fetchAPI().catch(console.error);
     setOpen(true);
-  }
+  };
   return (
     <>
       {open && <ThxDialog open={open} close={() => setOpen(false)} />}
@@ -30,9 +25,12 @@ export default function ResultCard({result}: {result: TResult}) {
           <Typography variant={'h5'} sx={{m: 1, marginBottom: 4}}>
             {result.title}
           </Typography>
-          <Box sx={{
-            display: 'flex', justifyContent: 'space-between',
-          }}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
             <ParamComponent to={result.rate + '%'} caption={'Ставка'} />
             <ParamComponent to={result.sum.to + RU} caption={'Сумма'} />
             <ParamComponent
@@ -40,9 +38,11 @@ export default function ResultCard({result}: {result: TResult}) {
               caption={'Срок'}
             />
           </Box>
-          <Box sx={{
-            display: 'flex',
-          }}></Box>
+          <Box
+            sx={{
+              display: 'flex',
+            }}
+          ></Box>
         </Box>
         <Box sx={{width: '100%', display: 'flex', justifyContent: 'flex-end'}}>
           <Button

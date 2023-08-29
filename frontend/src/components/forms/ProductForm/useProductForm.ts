@@ -7,9 +7,13 @@ export default function useProductForm() {
   const [time, setTime] = useState<number>(1);
 
   return {
-    sum, setSum,
-    payment, setPayment,
-    purpose, setPurpose,
-    time, setTime
+    sum,
+    setSum,
+    payment,
+    setPayment,
+    purpose,
+    setPurpose,
+    time,
+    setTime,
   };
 }

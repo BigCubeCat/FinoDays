@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import useHistoryForm from '@/components/forms/HistoryForm/useHistoryForm.ts';
 import {variants} from '@/components/forms/HistoryForm/const.ts';
 
-export default function HistoryForm(props: {next: (() => void)}) {
+export default function HistoryForm(props: {next: () => void}) {
   const formData = useHistoryForm();
   console.log(formData.otherProducts);
 
@@ -71,21 +71,33 @@ export default function HistoryForm(props: {next: (() => void)}) {
           Использование продуктов ПСБ
         </Typography>
         <Box sx={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-          {variants.map(variant => <Button
-            sx={{broderRadius: 50, m: 2, p: 2}}
-            variant={formData.otherProducts[variant.id] ? 'contained' : 'text'}
-            color={'primary'}
-            onClick={() => {
-              formData.setOtherProducts(formData.otherProducts.map((v, i) => (i === variant.id) ? !v : v));
-            }}
-          >{variant.label}</Button>)}
+          {variants.map((variant) => (
+            <Button
+              sx={{broderRadius: 50, m: 2, p: 2}}
+              variant={
+                formData.otherProducts[variant.id] ? 'contained' : 'text'
+              }
+              color={'primary'}
+              onClick={() => {
+                formData.setOtherProducts(
+                  formData.otherProducts.map((v, i) =>
+                    i === variant.id ? !v : v,
+                  ),
+                );
+              }}
+            >
+              {variant.label}
+            </Button>
+          ))}
         </Box>
       </Box>
       <Button
         onClick={() => props.next()}
         variant={'contained'}
         sx={{marginTop: 5}}
-      >Отправить</Button>
+      >
+        Отправить
+      </Button>
     </Card>
   );
 }

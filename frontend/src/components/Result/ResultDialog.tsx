@@ -7,7 +7,10 @@ import {loadResult} from '@/app/response/responseAPI.ts';
 import {TResult} from '@/app/types.ts';
 import ResultCard from './ResultCard';
 
-export default function ResultDialog(props: {open: boolean, close: () => void}) {
+export default function ResultDialog(props: {
+  open: boolean;
+  close: () => void;
+}) {
   const user = useAppSelector(selectUser).user;
   const [results, setResults] = useState<TResult[]>([]);
   useEffect(() => {
@@ -23,16 +26,19 @@ export default function ResultDialog(props: {open: boolean, close: () => void}) 
     <Dialog onClose={() => props.close()} open={props.open} fullScreen>
       <Header />
       <DialogTitle>
-        <Button variant={"text"} onClick={() => props.close()}>
+        <Button variant={'text'} onClick={() => props.close()}>
           Назад
         </Button>
         <Typography variant={'h5'} textAlign={'center'}>
           На основании ваших ответов мы модобрали для вас лучшие предложения
         </Typography>
-
       </DialogTitle>
-      <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        {results.map(result => <ResultCard result={result} />)}
+      <Box
+        sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
+      >
+        {results.map((result) => (
+          <ResultCard result={result} />
+        ))}
       </Box>
     </Dialog>
   );

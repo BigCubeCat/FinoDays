@@ -7,21 +7,23 @@ import {DatePicker} from '@mui/x-date-pickers/DatePicker';
 import {TimePicker} from '@mui/x-date-pickers/TimePicker';
 import dayjs, {Dayjs} from 'dayjs';
 
-
 export default function ContactTime() {
   const [value, setValue] = useState<Dayjs | null>(dayjs('2022-04-17T15:30'));
   return (
     <Box>
-      <Typography variant={'h5'}>
-        Время для связи
-      </Typography>
-      <Box sx={{
-        display: 'flex', justifyContent: 'center',
-        marginTop: 3
-      }}>
-        <Box sx={{
-          marginRight: 1,
-        }}>
+      <Typography variant={'h5'}>Время для связи</Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: 3,
+        }}
+      >
+        <Box
+          sx={{
+            marginRight: 1,
+          }}
+        >
           <Typography variant={'body2'}>День</Typography>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker />
