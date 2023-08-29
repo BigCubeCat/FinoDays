@@ -19,15 +19,20 @@ type TMatchBody = {
 router.post('/match', function (req, res, _next) {
   const body: TMatchBody = req.body;
   const result: TPlanDTO[] = plans.filter((plan) =>
-    plan.condition.user_score <= body.score &&
+    (!plan.condition.user_score || plan.condition.user_score <= body.score) &&
     (body.plan.duration - plan.duration) < 2 &&
     body.plan.sum >= plan.sum.from && body.plan.sum <= plan.sum.to,
   );
   console.log(body.plan.sum);
+  result.map((el) => {
+    delete el.condition.user_score;
+    return el;
+  })
   res.send({
     plans: result,
   });
 });
+
 
 
 

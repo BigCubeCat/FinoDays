@@ -204,8 +204,8 @@ func stateUserPSBRoleHandler(user *database.User, msg tgbotapi.MessageConfig) {
 		msg.Text = utils.PlanToText(plan)
 		BotCore.Bot.Send(msg)
 	}
-	msg.ReplyMarkup = generateKeyBoard(user.Plans)
-	msg.Text = "Выберите план, который хотите получить:"
+	msg.ReplyMarkup = finalKeyboard
+	msg.Text = "Чтобы выбрать заинтересовавший вас план, введите его номер."
 	BotCore.Bot.Send(msg)
 
 }
@@ -216,35 +216,24 @@ func stateResultHandler(update *tgbotapi.Update, user *database.User, msg tgbota
 		user.UpdateChatState(state.ChatStateMenu)
 		msg.Text = BotCore.GetPhrase("start")
 		msg.ReplyMarkup = mainKeyboard
+		user.ClearPlans()
+		goto SEND
+	default:
+		intValue, err := strconv.Atoi(update.Message.Text)
+		if err != nil {
+			goto ERROR
+		}
+		if database.Contains(user.Plans, int64(intValue)) {
+			msg.Text = "ССЫЛКА НА САЙТ"
+			msg.ReplyMarkup = finalKeyboard
+			goto SEND
+		}
+		msg.Text = "План с таким номером не найден"
 		goto SEND
 	}
+ERROR:
 	msg.ReplyMarkup = finalKeyboard
 	msg.Text = BotCore.GetPhrase("unknown")
 SEND:
 	BotCore.Bot.Send(msg)
-}
-
-func generateKeyBoard(array []int64) *tgbotapi.ReplyKeyboardMarkup {
-	var keyboard tgbotapi.ReplyKeyboardMarkup
-	var row []tgbotapi.KeyboardButton
-
-	for i := 0; i < len(array); i++ {
-		row = append(row, tgbotapi.NewKeyboardButton(strconv.Itoa(i)))
-
-		// If the row is full, add it to the keyboard and reset the row
-		if len(row) >= 3 {
-			keyboard.Keyboard = append(keyboard.Keyboard, row)
-			row = []tgbotapi.KeyboardButton{}
-		}
-	}
-
-	// Add the remaining row if it is not empty
-	if len(row) > 0 {
-		keyboard.Keyboard = append(keyboard.Keyboard, row)
-	}
-	keyboard.Keyboard = append(keyboard.Keyboard, tgbotapi.NewKeyboardButtonRow(
-		tgbotapi.NewKeyboardButton("Вернуться в главное меню"),
-	))
-
-	return &keyboard
 }

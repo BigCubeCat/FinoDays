@@ -97,7 +97,7 @@ func (user *User) SetUserFamilyStatus(familyStatus FamilyStatus) {
 }
 
 func (user *User) AddPlanId(id int64) {
-	if contains(user.Plans, id) {
+	if Contains(user.Plans, id) {
 		return
 	}
 	user.Plans = append(user.Plans, id)
@@ -117,7 +117,7 @@ func (user *User) ClearPlans() {
 //
 // Returns:
 // - bool: true if the element is found, false otherwise.
-func contains(s []int64, e int64) bool {
+func Contains(s []int64, e int64) bool {
 	for _, a := range s {
 		if a == e {
 			return true
