@@ -6,8 +6,7 @@
     "build": "rimraf ./build && tsc",
     "start:dev": "npx nodemon",
     "start": "yarn build && node build/index.js",
-    "lint": "eslint . --ext .ts",
-    "gendoc": "node src/swagger.js"
+    "lint": "eslint . --ext .ts"
   },
   "license": "MIT",
   "devDependencies": {

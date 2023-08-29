@@ -1,0 +1,65 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ПСБ+",
+    "description": "Сильный помощник для сильных людей",
+    "version": "0.0.1"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/plan": {
+      "post": {
+        "operationId": "getPlans",
+        "summary": "List of possible bank products",
+        "description": "Lists of suitable bank products.\n",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "examples": {
+              "application/json": "{\n    \"plans\": [\n        {\n          \"id\": 1,\n          \"title\": \"Самый зачательный кредит\",\n          \"type\": \"none\",\n          \"sum\": {\n            \"from\": 100000,\n            \"to\": 150000000\n          },\n          \"duration\": 20,\n          \"rate\": 4.7,\n          \"condition\": {\n            \"provision\": \"none\"\n          }\n        }\n    ]\n}"
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "examples": {
+              "application/json": "{\n  \"error\": \"error message\"\n}"
+            }
+          }
+        }
+      }
+    },
+    "/plan/buy/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "required": true,
+          "in": "path",
+          "type": "number"
+        }
+      ],
+      "post": {
+        "operationId": "buy",
+        "summary": "Take a loan",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "examples": {
+              "application/json": "{\n  \"status\": \"accept\"\n}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

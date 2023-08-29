@@ -5,20 +5,22 @@ import express from 'express';
 import morgan from 'morgan';
 
 import swaggerUi from 'swagger-ui-express';
-import swaggerFile from './assets/swagger-output.json';
+import swaggerFile from './assets/swagger.json';
 
-import {loadConfig, config} from './config';
+import { loadConfig, config } from './config';
 loadConfig();
 
 import indexRouter from './routers/indexRouter';
 import planRouter from './routers/planRouter';
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
 app.use('/plan', planRouter);
@@ -26,7 +28,7 @@ app.use('/plan', planRouter);
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   next(createError(404));
 });
 
