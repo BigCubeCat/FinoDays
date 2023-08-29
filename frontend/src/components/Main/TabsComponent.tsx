@@ -14,6 +14,7 @@ export default function MyTabs() {
   return (
     <Box
       component={Paper}
+      elevation={0}
       sx={{
         display: 'flex', justifyContent: 'center',
       }}>

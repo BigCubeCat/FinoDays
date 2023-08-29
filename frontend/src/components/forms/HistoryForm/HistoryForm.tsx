@@ -33,10 +33,21 @@ export default function HistoryForm() {
           fullWidth
           sx={{m: 1}}
           type={'number'}
-          label={'текущий расход по кредитам'}
+          label={'Текущий расход по кредитам'}
           onChange={(e) => formData.setConsumption(Number(e.target.value))}
           value={formData.consumption}
           InputProps={{inputProps: {min: 0, max: 100000000}}}
+        />
+        <TextField
+          fullWidth
+          sx={{m: 1}}
+          margin={'normal'}
+          label={'Стаж, лет'}
+          type={'number'}
+          placeholder={'Трудовой стаж'}
+          onChange={(e) => formData.setExperience(Number(e.target.value))}
+          value={formData.experience}
+          InputProps={{inputProps: {min: 0, max: 1000}}}
         />
         <TextField
           fullWidth

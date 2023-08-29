@@ -8,7 +8,6 @@ export default function useUserForm() {
 
   const [name, setName] = useState<string>(user.name);
   const [age, setAge] = useState(user.age);
-  const [experience, setExperience] = useState(user.experience);
 
   const [phone, setPhone] = useState(user.phone);
 
@@ -20,8 +19,6 @@ export default function useUserForm() {
     setName,
     age,
     setAge,
-    experience,
-    setExperience,
     phone,
     setPhone,
     saveData,

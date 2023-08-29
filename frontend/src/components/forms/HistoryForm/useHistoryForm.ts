@@ -11,6 +11,7 @@ export default function useHistoryForm() {
   const [income, setIncome] = useState(user.income);
   const [consumption, setConsumption] = useState(user.consumption);
   const [employer, setEmployer] = useState('');
+  const [experience, setExperience] = useState(user.experience);
 
   const [provision, setProvision] = useState<TProvisionVariant>(user.provision);
 
@@ -22,6 +23,7 @@ export default function useHistoryForm() {
     consumption, setConsumption,
     employer, setEmployer,
     otherProducts, setOtherProducts,
-    provision, setProvision
+    provision, setProvision,
+    experience, setExperience
   };
 }

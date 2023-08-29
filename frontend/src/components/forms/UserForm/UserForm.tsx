@@ -43,16 +43,7 @@ export default function UserForm() {
             onChange={(e) => formData.setName(e.target.value)}
             value={formData.name}
           />
-          <TextField
-            fullWidth
-            margin={'normal'}
-            label={'Стаж, лет'}
-            type={'number'}
-            placeholder={'Трудовой стаж'}
-            onChange={(e) => formData.setExperience(Number(e.target.value))}
-            value={formData.experience}
-            InputProps={{ inputProps: { min: 0, max: 1000 } }}
-          />
+
           <MuiTelInput
             fullWidth
             value={formData.phone}

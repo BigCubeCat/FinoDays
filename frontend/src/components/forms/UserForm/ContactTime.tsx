@@ -31,7 +31,6 @@ export default function ContactTime() {
           <Typography variant={'body2'}>Время</Typography>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <TimePicker
-              label='Controlled picker'
               value={value}
               onChange={(newValue) => setValue(newValue)}
             />
