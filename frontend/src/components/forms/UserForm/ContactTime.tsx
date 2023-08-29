@@ -10,7 +10,7 @@ import dayjs, {Dayjs} from 'dayjs';
 export default function ContactTime() {
   const [value, setValue] = useState<Dayjs | null>(dayjs('2022-04-17T15:30'));
   return (
-    <Box>
+    <Box sx={{marginTop: 3}}>
       <Typography variant={'h5'}>Время для связи</Typography>
       <Box
         sx={{
