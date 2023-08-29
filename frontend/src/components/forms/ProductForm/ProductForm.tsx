@@ -1,12 +1,13 @@
 import {
-  Box, Card, MenuItem, Select, SelectChangeEvent, TextField, Typography,
+  Box, Button, Card, MenuItem, Select, SelectChangeEvent, TextField, Typography,
 } from '@mui/material';
+
 import MoneyInput from '@/components/forms/MoneyInput.tsx';
 import useProductForm from '@/components/forms/ProductForm/useProductForm.ts';
 import {purposeVariants} from '@/components/forms/ProductForm/const.ts';
 
 
-export default function ProductForm() {
+export default function ProductForm(props: {next: (() => void)}) {
   const formData = useProductForm();
 
   const handleSelectChange = (event: SelectChangeEvent) => {
@@ -72,6 +73,11 @@ export default function ProductForm() {
           enableButtons
         />
       </Box>
+      <Button
+        onClick={() => props.next()}
+        variant={'contained'}
+        sx={{marginTop: 5}}
+      >Далее</Button>
     </Card>
   );
 }

@@ -1,14 +1,36 @@
 import React, {useState} from 'react';
 import {Box, Paper, Tab, Tabs} from '@mui/material';
 
-import {tabs} from '@/components/Main/const.ts';
+import ProductForm from '@/components/forms/ProductForm/ProductForm.tsx';
+import UserForm from '@/components/forms/UserForm/UserForm.tsx';
+import HistoryForm from '@/components/forms/HistoryForm/HistoryForm.tsx';
 
 export default function MyTabs() {
   const [value, setValue] = useState(0);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
+  const tabs = [
+    {
+      id: 0,
+      label: 'Условия',
+      content: <ProductForm next={() => setValue(1)} />,
+    },
+    {
+      id: 1,
+      label: 'Персональные данные',
+      content: <UserForm next={() => setValue(2)} />,
+    },
+    {
+      id: 2,
+      label: 'Кредитная история',
+      content: <HistoryForm next={() => setIsOpen(true)} />,
+    },
+  ];
+
   const CurrentTab = tabs.filter(tab => tab.id === value)[0].content;
 
   return (
@@ -30,7 +52,7 @@ export default function MyTabs() {
             id={`tab-${tab.id}`}
           />)}
         </Tabs>
-        <CurrentTab />
+        {CurrentTab}
       </Box>
     </Box>
   );

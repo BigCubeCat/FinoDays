@@ -1,4 +1,4 @@
-import { Card, TextField, Typography } from '@mui/material';
+import {Button, Card, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import { MuiTelInput } from 'mui-tel-input';
 import React from 'react';
@@ -9,7 +9,7 @@ import Family from './Family';
 import Region from './Region';
 import ContactTime from './ContactTime';
 
-export default function UserForm() {
+export default function UserForm(props: {next: (() => void)}) {
   const formData = useUserForm();
   const GosComponent = React.memo(Gos);
 
@@ -60,6 +60,11 @@ export default function UserForm() {
         <Region />
       </Box>
       <ContactTime />
+      <Button
+        onClick={() => props.next()}
+        variant={"contained"}
+        sx={{marginTop: 5}}
+      >Далее</Button>
     </Card>
   );
 }

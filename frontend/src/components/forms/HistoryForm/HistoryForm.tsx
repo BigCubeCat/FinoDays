@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import useHistoryForm from '@/components/forms/HistoryForm/useHistoryForm.ts';
 import {variants} from '@/components/forms/HistoryForm/const.ts';
 
-export default function HistoryForm() {
+export default function HistoryForm(props: {next: (() => void)}) {
   const formData = useHistoryForm();
   console.log(formData.otherProducts);
 
@@ -81,6 +81,11 @@ export default function HistoryForm() {
           >{variant.label}</Button>)}
         </Box>
       </Box>
+      <Button
+        onClick={() => props.next()}
+        variant={'contained'}
+        sx={{marginTop: 5}}
+      >Отправить</Button>
     </Card>
   );
 }
