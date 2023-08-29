@@ -2,8 +2,12 @@ package api
 
 import "psb_bot/database"
 
-type Respones struct {
+type Response struct {
 	Plans []Plan `json:"plans"`
+}
+
+type ResponseApproved struct {
+	Status string `json:"status"`
 }
 
 type Request struct {

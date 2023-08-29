@@ -35,7 +35,6 @@ const (
 
 type Provision string
 
-// 'none' | 'flat' | 'house' | 'land' | 'car';
 const (
 	NoneP  Provision = "none"
 	FlatP  Provision = "flat"
@@ -59,5 +58,6 @@ type User struct {
 	FamilyStatus FamilyStatus
 	Target       LoanTarger
 	PBSProduct   PBSProduct
+	Plans        []int64 `gorm:"type:integer[]"`
 	ChatState    state.ChatState
 }

@@ -38,11 +38,36 @@ func GetUserPlans(user *database.User) []Plan {
 		return []Plan{}
 	}
 
-	responseBody := parseBody(resp.Body)
+	responseBody := parseBody[Response](resp.Body)
 	if responseBody == nil {
 		return []Plan{}
 	}
 	return responseBody.Plans
+}
+
+func TryApproveCredit(user *database.User, plan *Plan) bool {
+	url := fmt.Sprintf("%s/buy/%d/", BANK_API, plan.Id)
+	req, _ := http.NewRequest("POST", url, nil)
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Accept", "application/json")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Println(err)
+		return false
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		log.Println(resp.StatusCode)
+		err, _ := io.ReadAll(resp.Body)
+		log.Println(string(err))
+		return false
+	}
+
+	res := parseBody[ResponseApproved](resp.Body)
+	return res.Status == "approved"
 }
 
 func createRequestBody(user *database.User) *Request {
@@ -70,8 +95,8 @@ func createRequestBody(user *database.User) *Request {
 	return &request
 }
 
-func parseBody(body io.ReadCloser) *Respones {
-	var parsedResponse Respones
+func parseBody[T any](body io.ReadCloser) *T {
+	var parsedResponse T
 	err := json.NewDecoder(body).Decode(&parsedResponse)
 	if err != nil {
 		fmt.Println("Error:", err)
