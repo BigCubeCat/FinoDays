@@ -2,9 +2,9 @@ import {
   Box, Typography
 } from '@mui/material';
 
-export default function ParamComponent(props: {to: number, caption: string}) {
+export default function ParamComponent(props: {to: string, caption: string}) {
   return (
-    <Box>
+    <Box sx={{m: 2}}>
       <Typography variant={'h6'}>
         До {props.to}
       </Typography>
